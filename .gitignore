@@ -18,3 +18,7 @@ uploads/
 !docs/**/*.png
 .DS_Store
 node_modules/
+*.log
+.pytest-cache-guestlist/
+.pytest_cache/
+*.egg-info/

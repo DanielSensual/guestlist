@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "guestlist"
+version = "0.1.0"
+description = "Event footage that knows who is in every frame: per-guest films, a coverage ledger, and consent you can switch off — on the Meta Model API (SAM 3.1 + Muse Spark)."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Daniel Castillo (Ghost AI Systems)" }]
+license = { text = "MIT" }
+dependencies = [
+    "openai>=1.40",
+    "httpx>=0.27",
+    "meta-sam-parser>=0.1.0",
+    "numpy>=1.26",
+    "opencv-python>=4.10",
+    "ghostcut",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.2", "jsonschema>=4.22"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
