@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import threading
 import time
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,7 @@ ROOT = Path(os.environ.get("GUESTLIST_HOME", Path(__file__).resolve().parents[3]
 CACHE_DIR = Path(os.environ.get("GUESTLIST_CACHE", ROOT / ".cache"))
 LEDGER = CACHE_DIR / "spend.jsonl"
 BUDGET_USD = float(os.environ.get("GUESTLIST_BUDGET_USD", "115"))
+_LOCK = threading.Lock()  # windowed SAM runs requests on worker threads; index and ledger writes go one at a time
 
 
 class BudgetExceeded(RuntimeError):
@@ -32,17 +34,20 @@ def sha256_file(path: str | Path) -> str:
     path = Path(path).resolve()
     st = path.stat()
     index_path = CACHE_DIR / "sha256-index.json"
-    index = json.loads(index_path.read_text()) if index_path.exists() else {}
     stamp = f"{path}|{st.st_size}|{st.st_mtime_ns}"
-    if stamp in index:
-        return index[stamp]
+    with _LOCK:
+        index = json.loads(index_path.read_text()) if index_path.exists() else {}
+        if stamp in index:
+            return index[stamp]
     h = hashlib.sha256()
     with open(path, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
-    index[stamp] = h.hexdigest()
-    index_path.parent.mkdir(parents=True, exist_ok=True)
-    index_path.write_text(json.dumps(index, indent=1))
+    with _LOCK:
+        index = json.loads(index_path.read_text()) if index_path.exists() else {}
+        index[stamp] = h.hexdigest()
+        index_path.parent.mkdir(parents=True, exist_ok=True)
+        index_path.write_text(json.dumps(index, indent=1))
     return index[stamp]
 
 
@@ -69,7 +74,7 @@ def spent() -> float:
 
 def charge(what: str, model: str, usd: float, **detail: Any) -> None:
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
-    with open(LEDGER, "a") as f:
+    with _LOCK, open(LEDGER, "a") as f:
         f.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "what": what, "model": model,
                             "usd": round(usd, 6), **detail}) + "\n")
 

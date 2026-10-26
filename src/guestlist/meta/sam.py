@@ -4,7 +4,11 @@ Two prompt kinds (never mixed in one request):
 - concept: one short noun phrase, e.g. "person" — every match, ids chosen by the model
 - objects: box/point prompts on chosen frames, ids chosen by us (`build_objects_prompt`)
 
-Raw output text is cached and parsed offline with Meta's own `meta_sam_parser`.
+Raw output text is cached and parsed offline: boxes/ids/confidence with a regex, masks in bulk
+through Meta's JS decoder (`decode_masks`, `mask_fills`).
+
+One request hands out at most `MAX_IDS` object ids (Day-2 finding); long or crowded clips go
+through `guestlist.windows`.
 """
 
 from __future__ import annotations
@@ -31,6 +35,7 @@ from . import cache, files, pricing
 from .client import client
 
 MODEL = "sam-3.1"
+MAX_IDS = 16  # a concept pass stops assigning new ids after 16, however long the clip
 
 
 @dataclass
@@ -148,8 +153,15 @@ def rle_to_array(rle: dict) -> np.ndarray:
     return flat.reshape(w, h).T.copy()
 
 
-def decode_masks(dets: list[Detection]) -> dict[tuple[int, str], np.ndarray]:
-    """Decode many masks at once through Meta's JS decoder (~12 ms/mask vs ~1 s in Python)."""
+def rle_area(rle: dict) -> float:
+    """Fraction of the raster that is mask, straight from the run lengths (runs alternate 0s, 1s, ...)."""
+    h, w = rle["size"]
+    counts = rle_counts(rle["counts"]) if isinstance(rle["counts"], str) else list(rle["counts"])
+    return sum(counts[1::2]) / (h * w) if h * w else 0.0
+
+
+def _node_rles(dets: list[Detection]) -> dict[tuple[int, str], dict]:
+    """(frame, id) -> COCO RLE, decoded through Meta's JS decoder (~12 ms/mask vs ~1 s in Python)."""
     import json
     import subprocess
 
@@ -157,16 +169,25 @@ def decode_masks(dets: list[Detection]) -> dict[tuple[int, str], np.ndarray]:
                                  "payload": d.mask.payload, "width": d.mask.width, "height": d.mask.height})
                      for d in dets if d.mask is not None)
     out = subprocess.run(["node", str(NODE_DECODER)], input=jobs, capture_output=True, text=True, check=True)
-    boxes = {(d.frame, d.object_id): d.box for d in dets}
-    masks: dict[tuple[int, str], np.ndarray] = {}
+    rles: dict[tuple[int, str], dict] = {}
     for line in out.stdout.splitlines():
         row = json.loads(line)
         if "error" in row:
             raise RuntimeError(f"mask {row['key']}: {row['error']}")
         frame, oid = row["key"].split(":")
-        k = (int(frame), oid)
-        masks[k] = fit_to_box(rle_to_array(row["rle"]), boxes[k])
-    return masks
+        rles[(int(frame), oid)] = row["rle"]
+    return rles
+
+
+def decode_masks(dets: list[Detection]) -> dict[tuple[int, str], np.ndarray]:
+    """Decode many masks at once; each comes back scaled over its full box."""
+    boxes = {(d.frame, d.object_id): d.box for d in dets}
+    return {k: fit_to_box(rle_to_array(rle), boxes[k]) for k, rle in _node_rles(dets).items()}
+
+
+def mask_fills(dets: list[Detection]) -> dict[tuple[int, str], float]:
+    """(frame, id) -> mask area / box area. No rasters are built, so this is cheap enough to sample a clip."""
+    return {k: rle_area(rle) for k, rle in _node_rles(dets).items()}
 
 
 def build_objects_prompt(size: tuple[int, int], boxes: dict[int, tuple[int, int, tuple[int, int, int, int]]]) -> str:
