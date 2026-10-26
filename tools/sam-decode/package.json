@@ -1,0 +1,11 @@
+{
+  "name": "guestlist-sam-decode",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Bulk SAM 3.1 mask decoding via Meta's @meta-sam/parser (JS is ~90x faster than the Python port)",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@meta-sam/parser": "^0.1.0"
+  }
+}

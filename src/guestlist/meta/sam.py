@@ -9,14 +9,15 @@ Raw output text is cached and parsed offline with Meta's own `meta_sam_parser`.
 
 from __future__ import annotations
 
+import re
 import time
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 
+import cv2
 import numpy as np
 from meta_sam_parser import (
-    CompletedOutcome,
     FramePrompt,
     PromptBox,
     PromptObject,
@@ -24,7 +25,6 @@ from meta_sam_parser import (
     SegmentationMask,
     build_object_prompt,
     decode_mask_to_raster,
-    video_segmentation_format,
 )
 
 from . import cache, files, pricing
@@ -42,11 +42,19 @@ class Detection:
     mask: SegmentationMask | None = None
 
     def mask_array(self) -> np.ndarray | None:
-        """Binary mask cropped to `box` (rows = box height, cols = box width)."""
+        """Binary mask over `box` (rows = box height, cols = box width). Slow (~1 s); prefer `decode_masks`."""
         if self.mask is None:
             return None
         raster = decode_mask_to_raster(self.mask)
-        return np.frombuffer(raster, dtype=np.uint8).reshape(self.mask.height, self.mask.width)
+        return fit_to_box(np.frombuffer(raster, dtype=np.uint8).reshape(self.mask.height, self.mask.width), self.box)
+
+
+def fit_to_box(raster: np.ndarray, box: tuple[int, int, int, int]) -> np.ndarray:
+    """SAM caps a mask raster's long side (1024 px seen); scale it back to cover the whole box."""
+    bw, bh = box[2] - box[0], box[3] - box[1]
+    if raster.shape == (bh, bw):
+        return raster
+    return cv2.resize(raster, (bw, bh), interpolation=cv2.INTER_NEAREST)
 
 
 @dataclass
@@ -67,36 +75,98 @@ class SamResult:
         return dict(out)
 
 
+_FRAME = re.compile(r"<(\d+)f>")
+_RECORD = re.compile(r"(?:^|,)(\d+)<\|box;([^|]*)\|><\|mask;([^|]*)\|>")
+_ENCODING = {"~": "lossless", "!": "one_bit"}
+
+
+def _fields(token: str) -> dict[str, str]:
+    head, _, data = token.partition("data=")
+    out = dict(kv.split("=", 1) for kv in head.strip(";").split(";") if "=" in kv)
+    if data:
+        out["data"] = data
+    return out
+
+
 def parse(text: str) -> tuple[list[Detection], tuple[int, int] | None]:
-    """Parse SAM's per-frame token text into detections (box + mask paired by frame and id)."""
-    parser = video_segmentation_format().create_parser()
-    parser.push(text, emit=False)
-    result = parser.finish(CompletedOutcome()).result
-    by_key: dict[tuple[int, str], Detection] = {}
-    for rec in result.records:
-        if rec.kind not in ("box", "mask"):
+    """Parse SAM's per-frame token text into detections. Fast: masks stay encoded until `mask_array()`.
+
+    `meta_sam_parser` strictly decodes every mask while parsing (~1 s per one_bit mask in pure
+    Python), which makes a 60 s clip take ~30 min. Boxes, ids and confidence are all tracking
+    needs, so we read those with a regex and decode masks lazily with the official decoder.
+    """
+    dets: list[Detection] = []
+    size: tuple[int, int] | None = None
+    for line in text.splitlines():
+        m = _FRAME.match(line)
+        if not m:
             continue
-        k = (rec.frame.frame_index, rec.object_id)
-        if rec.kind == "box":
-            by_key[k] = Detection(k[0], k[1], (rec.left, rec.top, rec.right, rec.bottom), rec.confidence)
-        else:
-            det = by_key.setdefault(k, Detection(k[0], k[1], (rec.bounds.left, rec.bounds.top,
-                                                               rec.bounds.right, rec.bounds.bottom)))
-            det.mask = rec.mask
-            if det.confidence is None:
-                det.confidence = rec.confidence
-    size = _frame_size(text)
-    return list(by_key.values()), size
+        frame = int(m.group(1))
+        for oid, box_tok, mask_tok in _RECORD.findall(line[m.end():]):
+            b = _fields(box_tok)
+            if size is None:
+                size = (int(b["w"]), int(b["h"]))
+            mk = _fields(mask_tok)
+            h, w, payload = mk["data"].split(",", 2)
+            mask = SegmentationMask(encoding=_ENCODING.get(payload[:1], "lossless"), payload=payload,
+                                    width=int(w), height=int(h))
+            conf = b.get("c") or mk.get("c")
+            dets.append(Detection(frame, oid, (int(b["x1"]), int(b["y1"]), int(b["x2"]) + 1, int(b["y2"]) + 1),
+                                  float(conf) if conf is not None else None, mask))
+    return dets, size
 
 
-def _frame_size(text: str) -> tuple[int, int] | None:
-    i = text.find(";w=")
-    if i < 0:
-        return None
-    w = int(text[i + 3:text.index(";", i + 3)])
-    j = text.find(";h=", i)
-    end = min(x for x in (text.find(";", j + 3), text.find("|", j + 3)) if x > 0)
-    return w, int(text[j + 3:end])
+NODE_DECODER = Path(__file__).resolve().parents[3] / "tools" / "sam-decode" / "decode.mjs"
+
+
+def rle_counts(s: str) -> list[int]:
+    """COCO compressed-RLE string -> run lengths (pycocotools' rleFrString)."""
+    counts: list[int] = []
+    p = 0
+    while p < len(s):
+        x, k, more = 0, 0, True
+        while more:
+            c = ord(s[p]) - 48
+            x |= (c & 0x1F) << (5 * k)
+            more = bool(c & 0x20)
+            p += 1
+            k += 1
+            if not more and (c & 0x10):
+                x |= -1 << (5 * k)
+        if len(counts) > 2:
+            x += counts[-2]
+        counts.append(x)
+    return counts
+
+
+def rle_to_array(rle: dict) -> np.ndarray:
+    """COCO RLE {size: [h, w], counts} (column-major) -> (h, w) uint8 array."""
+    h, w = rle["size"]
+    counts = rle_counts(rle["counts"]) if isinstance(rle["counts"], str) else list(rle["counts"])
+    values = np.arange(len(counts)) % 2
+    flat = np.repeat(values.astype(np.uint8), counts)
+    return flat.reshape(w, h).T.copy()
+
+
+def decode_masks(dets: list[Detection]) -> dict[tuple[int, str], np.ndarray]:
+    """Decode many masks at once through Meta's JS decoder (~12 ms/mask vs ~1 s in Python)."""
+    import json
+    import subprocess
+
+    jobs = "\n".join(json.dumps({"key": f"{d.frame}:{d.object_id}", "encoding": d.mask.encoding,
+                                 "payload": d.mask.payload, "width": d.mask.width, "height": d.mask.height})
+                     for d in dets if d.mask is not None)
+    out = subprocess.run(["node", str(NODE_DECODER)], input=jobs, capture_output=True, text=True, check=True)
+    boxes = {(d.frame, d.object_id): d.box for d in dets}
+    masks: dict[tuple[int, str], np.ndarray] = {}
+    for line in out.stdout.splitlines():
+        row = json.loads(line)
+        if "error" in row:
+            raise RuntimeError(f"mask {row['key']}: {row['error']}")
+        frame, oid = row["key"].split(":")
+        k = (int(frame), oid)
+        masks[k] = fit_to_box(rle_to_array(row["rle"]), boxes[k])
+    return masks
 
 
 def build_objects_prompt(size: tuple[int, int], boxes: dict[int, tuple[int, int, tuple[int, int, int, int]]]) -> str:

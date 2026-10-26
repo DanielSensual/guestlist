@@ -43,13 +43,13 @@ def check(start: float, estimate: float, what: str) -> None:
         raise SystemExit(f"STOP: {what} would push this run past ${RUN_CAP_USD:.2f}")
 
 
-def overlay(png_in: Path, dets: list[sam.Detection], png_out: Path) -> None:
+def overlay(png_in: Path, dets: list[sam.Detection], masks: dict, png_out: Path) -> None:
     img = cv2.imread(str(png_in))
     colors = [(66, 135, 245), (245, 182, 66), (80, 200, 120), (200, 80, 200)]
     for i, d in enumerate(dets):
         c = colors[i % len(colors)]
         l, t, r, b = d.box
-        m = d.mask_array()
+        m = masks.get((d.frame, d.object_id))
         if m is not None:
             region = img[t:t + m.shape[0], l:l + m.shape[1]]
             sel = m[:region.shape[0], :region.shape[1]].astype(bool)
@@ -130,14 +130,20 @@ def main() -> None:
                                                                 key=lambda f: abs(f - mid))]
     mid = mid_dets[0].frame if mid_dets else mid
     decoded = []
+    t = time.time()
+    mid_masks = sam.decode_masks(mid_dets)
+    all_masks_t = time.time()
+    sam.decode_masks(concept.detections)
+    report["mask_decode"] = {"node_bulk_all_seconds": round(time.time() - all_masks_t, 2),
+                             "masks": len(concept.detections)}
     for d in mid_dets:
-        m = d.mask_array()
+        m = mid_masks.get((d.frame, d.object_id))
         decoded.append({"id": d.object_id, "box": d.box, "mask_hw": list(m.shape) if m is not None else None,
                         "mask_fill": round(float(m.mean()), 3) if m is not None else None,
                         "box_hw": [d.box[3] - d.box[1], d.box[2] - d.box[0]]})
     report["mask_check"] = {"frame": mid, "decoded": decoded}
     png = proxy.frame_at(p60, mid, info["fps"], ROOT / "renders" / "spike-mid.png")
-    overlay(png, mid_dets, ROOT / "renders" / "spike-mid-overlay.png")
+    overlay(png, mid_dets, mid_masks, ROOT / "renders" / "spike-mid-overlay.png")
 
     # 4. box-prompt re-track of the largest person, forward from the mid frame
     if mid_dets:
@@ -158,12 +164,25 @@ def main() -> None:
         }
         print(f"SAM box re-track: {len(rt)} frames tracked, {retrack.frames_billed} billed, ${retrack.usd:.3f}")
 
-    # 5. Spark event log
-    tok = counts.get("video_60s") or 60 * 300
-    est = pricing.token_cost("muse-spark-1.3", tok + 600, 0, 16000)
-    check(start_spend, est, "Spark event log")
+    # 5. Spark event log. The input_tokens count endpoint does not count video (Day-1 finding),
+    # so measure video tokens from real generations at 20 s and 60 s and fit a line.
+    est = pricing.token_cost("muse-spark-1.3", 20 * 2000, 0, 16000)  # pessimistic: 2k tok/s
+    check(start_spend, est, "Spark event log (20 s)")
+    log20 = spark.event_log(p20)
+    tin20 = spark._usage_numbers(log20.usage)[0]
+    per_sec_guess = max(tin20 - counts.get("text_only", 0), 1) / 20
+    est = pricing.token_cost("muse-spark-1.3", int(per_sec_guess * 60) + 1000, 0, 16000)
+    check(start_spend, est, "Spark event log (60 s)")
     log = spark.event_log(p60)
     tin, tcached, tout, treason = spark._usage_numbers(log.usage)
+    counts["spark_input_20s"] = tin20
+    counts["spark_input_60s"] = tin
+    counts["tokens_per_video_second"] = round((tin - tin20) / 40, 1)
+    counts["fixed_overhead_tokens"] = round(tin - 60 * (tin - tin20) / 40)
+    report["token_counts"] = counts
+    report["spark_event_log_20s"] = {"usd": round(log20.usd, 4), "seconds": log20.meta.get("seconds"),
+                                     "input_tokens": tin20, "output_tokens": spark._usage_numbers(log20.usage)[2],
+                                     "events": len(log20.data.get("events", []))}
     report["spark_event_log"] = {
         "cached": log.cached, "usd": round(log.usd, 4), "seconds": log.meta.get("seconds"),
         "input_tokens": tin, "cached_tokens": tcached, "output_tokens": tout, "reasoning_tokens": treason,

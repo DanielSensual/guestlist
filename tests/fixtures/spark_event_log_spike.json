@@ -1,0 +1,118 @@
+{
+ "data": {
+  "clip_summary": "A young woman in a black dress and a man in a white cap dance partnered salsa-style in a dark nightclub with purple laser lights and jellyfish decorations. They perform continuous turns, close-hold body movement, and dramatic dips throughout the song while other couples dance in the background.",
+  "events": [
+   {
+    "confidence": 0.95,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 8.0,
+    "t_end": 7.0,
+    "t_start": 0.0,
+    "what": "The pair dance hand-to-hand as the man leads the woman in overhead-arm turns and spins, both smiling under purple light.",
+    "why_it_matters": "Clean opening sequence showing both faces and connection, good establishing opener for P1 and P2 highlight films."
+   },
+   {
+    "confidence": 0.9,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 7.5,
+    "t_end": 15.0,
+    "t_start": 7.0,
+    "what": "They move into close hold with the man behind the woman, guiding shoulder and hip isolations and body rolls in sync to the music.",
+    "why_it_matters": "Shows P1 styling and P2 leading in tight frame, flattering mid-shot for both films."
+   },
+   {
+    "confidence": 0.9,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 9.0,
+    "t_end": 22.0,
+    "t_start": 15.0,
+    "what": "The man supports the woman through a deep back lean and dip, then brings her back up into a turn.",
+    "why_it_matters": "Most dramatic dip moment with hair movement and expression, peak highlight clip for P1 and showcase of P2 dip lead."
+   },
+   {
+    "confidence": 0.88,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 7.5,
+    "t_end": 31.0,
+    "t_start": 22.0,
+    "what": "They separate to open position for footwork, hand changes, and multiple under-arm turns across the floor.",
+    "why_it_matters": "Demonstrates sustained partner work and smiling interaction, useful transition material for both guests."
+   },
+   {
+    "confidence": 0.9,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 8.0,
+    "t_end": 39.0,
+    "t_start": 31.0,
+    "what": "They return to close embrace, turning together cheek-to-cheek and holding eye contact while stepping in place.",
+    "why_it_matters": "Intimate connection beat with clear faces under green and purple lights, strong emotional moment for both films."
+   },
+   {
+    "confidence": 0.9,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 9.0,
+    "t_end": 47.0,
+    "t_start": 39.0,
+    "what": "The man leads a second dramatic backward dip with hair toss, holds, then lifts the woman back to standing into an immediate spin.",
+    "why_it_matters": "Best athletic showcase for P1 flexibility and P2 strength, ideal climax shot for highlight edits."
+   },
+   {
+    "confidence": 0.88,
+    "people": [
+     "P1",
+     "P2"
+    ],
+    "score": 7.0,
+    "t_end": 59.9,
+    "t_start": 47.0,
+    "what": "They finish with continuous hand-switch turns, side-by-side styling, and end walking hand-in-hand while still moving to the beat.",
+    "why_it_matters": "Clean closing sequence showing stamina and partnership to end P1 and P2 reels."
+   }
+  ],
+  "people": [
+   {
+    "appearance": "Young woman with long blonde ponytail with white clips, wearing black spaghetti-strap mini dress and light sneakers",
+    "first_seen_s": 0,
+    "label": "P1"
+   },
+   {
+    "appearance": "Man wearing light tan short-sleeve shirt, white shorts, white sneakers and white backward baseball cap",
+    "first_seen_s": 0,
+    "label": "P2"
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 16766,
+  "input_tokens_details": {
+   "cache_write_tokens": null,
+   "cached_tokens": 0
+  },
+  "output_tokens": 2242,
+  "output_tokens_details": {
+   "reasoning_tokens": 1377
+  },
+  "total_tokens": 19008
+ },
+ "clip_seconds": 60,
+ "model": "muse-spark-1.3",
+ "effort": "medium"
+}

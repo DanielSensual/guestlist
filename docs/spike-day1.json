@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-26 15:48 EDT",
+  "source": "dev-clip.mp4",
+  "source_info": {
+    "width": 2160,
+    "height": 3840,
+    "fps": 23.976023976023978,
+    "frames": 5508,
+    "duration": 229.7295
+  },
+  "proxy": {
+    "width": 720,
+    "height": 1280,
+    "fps": 12.0,
+    "frames": 720,
+    "duration": 60.0,
+    "bytes": 11808956,
+    "proxy20_bytes": 3722362
+  },
+  "token_counts": {
+    "text_only": 169,
+    "video_20s": 171,
+    "video_60s": 171,
+    "tokens_per_video_second": 272.5,
+    "fixed_overhead_tokens": 416,
+    "spark_input_20s": 5866,
+    "spark_input_60s": 16766
+  },
+  "sam_concept": {
+    "prompt": "person",
+    "cached": true,
+    "frames_billed": 720,
+    "usd": 0.144,
+    "seconds": 44.71,
+    "first_frame_seconds": 5.36,
+    "frame_size": [
+      720,
+      1280
+    ],
+    "frames_with_detections": 720,
+    "objects": {
+      "0": {
+        "frames": 720,
+        "first": 0,
+        "last": 719,
+        "mean_conf": 0.945
+      },
+      "1": {
+        "frames": 714,
+        "first": 0,
+        "last": 719,
+        "mean_conf": 0.879
+      },
+      "2": {
+        "frames": 34,
+        "first": 7,
+        "last": 50,
+        "mean_conf": 0.734
+      },
+      "3": {
+        "frames": 11,
+        "first": 10,
+        "last": 20,
+        "mean_conf": 0.723
+      },
+      "4": {
+        "frames": 5,
+        "first": 10,
+        "last": 14,
+        "mean_conf": 0.706
+      },
+      "5": {
+        "frames": 8,
+        "first": 18,
+        "last": 25,
+        "mean_conf": 0.773
+      },
+      "6": {
+        "frames": 37,
+        "first": 19,
+        "last": 55,
+        "mean_conf": 0.746
+      },
+      "7": {
+        "frames": 65,
+        "first": 29,
+        "last": 93,
+        "mean_conf": 0.801
+      },
+      "8": {
+        "frames": 15,
+        "first": 39,
+        "last": 54,
+        "mean_conf": 0.797
+      },
+      "9": {
+        "frames": 67,
+        "first": 46,
+        "last": 151,
+        "mean_conf": 0.739
+      },
+      "10": {
+        "frames": 10,
+        "first": 49,
+        "last": 58,
+        "mean_conf": 0.742
+      },
+      "11": {
+        "frames": 34,
+        "first": 56,
+        "last": 103,
+        "mean_conf": 0.739
+      },
+      "12": {
+        "frames": 15,
+        "first": 57,
+        "last": 71,
+        "mean_conf": 0.73
+      },
+      "13": {
+        "frames": 27,
+        "first": 68,
+        "last": 154,
+        "mean_conf": 0.71
+      },
+      "14": {
+        "frames": 34,
+        "first": 71,
+        "last": 104,
+        "mean_conf": 0.82
+      },
+      "15": {
+        "frames": 70,
+        "first": 73,
+        "last": 158,
+        "mean_conf": 0.813
+      }
+    },
+    "conf_min": 0.706,
+    "conf_mean": 0.878,
+    "text_bytes": 1289100
+  },
+  "mask_decode": {
+    "node_bulk_all_seconds": 25.13,
+    "masks": 1866
+  },
+  "mask_check": {
+    "frame": 360,
+    "decoded": [
+      {
+        "id": "0",
+        "box": [
+          306,
+          86,
+          656,
+          1191
+        ],
+        "mask_hw": [
+          1024,
+          324
+        ],
+        "mask_fill": 0.399,
+        "box_hw": [
+          1105,
+          350
+        ]
+      },
+      {
+        "id": "1",
+        "box": [
+          221,
+          117,
+          500,
+          1156
+        ],
+        "mask_hw": [
+          1024,
+          275
+        ],
+        "mask_fill": 0.399,
+        "box_hw": [
+          1039,
+          279
+        ]
+      }
+    ]
+  },
+  "sam_box_retrack": {
+    "prompt": "<360f>1<|box;x1=306;y1=86;x2=655;y2=1190;w=720;h=1280|>",
+    "from_frame": 360,
+    "cached": false,
+    "frames_billed": 360,
+    "usd": 0.072,
+    "seconds": 32.68,
+    "frames_tracked": 360,
+    "first": 360,
+    "last": 719,
+    "mean_conf": 0.96,
+    "mask_encoding_seen": [
+      "one_bit"
+    ]
+  },
+  "spark_event_log_20s": {
+    "usd": 0.0138,
+    "seconds": 12.47,
+    "input_tokens": 5866,
+    "output_tokens": 1527,
+    "events": 5
+  },
+  "spark_event_log": {
+    "cached": false,
+    "usd": 0.0305,
+    "seconds": 18.84,
+    "input_tokens": 16766,
+    "cached_tokens": 0,
+    "output_tokens": 2242,
+    "reasoning_tokens": 1377,
+    "status": "completed",
+    "people": 2,
+    "events": 7,
+    "rate_limit_headers": {
+      "x-ratelimit-limit-requests": "3000",
+      "x-ratelimit-remaining-requests": "2998",
+      "x-ratelimit-limit-tokens": "4000000",
+      "x-ratelimit-remaining-tokens": "3992607"
+    }
+  },
+  "transcribe": {
+    "turns": 2,
+    "speakers": [
+      "A"
+    ],
+    "audio_ms": 60080,
+    "transcript_chars": 173
+  },
+  "spend": {
+    "this_run_usd": 0.1193,
+    "ledger_total_usd": 0.2633
+  },
+  "projection_demo_set": {
+    "assumption": "2 cameras x 20 min, 12 fps proxies, one SAM concept pass + 25% box re-tracks, one Spark log per clip (output ~ this run's ratio)",
+    "sam_usd": 7.2,
+    "spark_usd": 1.2,
+    "total_usd": 8.4
+  }
+}

@@ -58,6 +58,7 @@ def extract_wav(src: str | Path, dst: str | Path, *, rate: int = 24000) -> Path:
 def frame_at(src: str | Path, frame: int, fps: float, dst: str | Path) -> Path:
     """Grab one frame (by index at `fps`) as a PNG."""
     dst = Path(dst)
+    dst.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", f"{frame / fps:.4f}",
                     "-i", str(src), "-frames:v", "1", str(dst)], check=True)
     return dst

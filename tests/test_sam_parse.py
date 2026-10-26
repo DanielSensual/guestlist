@@ -1,5 +1,6 @@
 import json
 
+import numpy as np
 import pytest
 
 from conftest import FIXTURES
@@ -42,7 +43,10 @@ def test_real_spike_output_parses_with_confidence_and_one_bit_masks():
     assert size == tuple(rec["frame_size"])
     assert dets, "expected at least one person"
     assert all(d.confidence is not None and 0 <= d.confidence <= 1 for d in dets)
-    for d in dets[:20]:
-        m = d.mask_array()
-        assert m.shape == (d.box[3] - d.box[1], d.box[2] - d.box[0])
+    assert all(d.mask.encoding == "one_bit" for d in dets)
+    # raster long side is capped by the API; fit_to_box scales it back over the full box
+    big = max(dets, key=lambda d: d.box[3] - d.box[1])
+    assert max(big.mask.height, big.mask.width) <= 1024
+    m = sam.fit_to_box(np.zeros((big.mask.height, big.mask.width), np.uint8), big.box)
+    assert m.shape == (big.box[3] - big.box[1], big.box[2] - big.box[0])
     assert {d.frame for d in dets} <= set(range(rec["frames_in_fixture"]))
