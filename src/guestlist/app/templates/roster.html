@@ -1,0 +1,153 @@
+{% macro track_card(ref) -%}
+{% set t = tracks[ref] %}
+<figure class="crop">
+  <img src="/media/{{ t.thumb }}" alt="{{ label_of[ref] }}" loading="lazy">
+  <figcaption><b>{{ label_of[ref] }}</b> · {{ t.clip }} {{ "%.1f"|format(t.first_s) }}–{{ "%.1f"|format(t.last_s) }}s</figcaption>
+</figure>
+{%- endmacro %}
+
+{% macro body() -%}
+<main id="roster">
+  <header class="top">
+    <h1>Guestlist <span>roster</span></h1>
+    <p class="stats">
+      <b>{{ guests|length }}</b> guests · {{ crowd|length }} crowd · {{ clips|length }} clips ·
+      <b>{{ open|length }}</b> to review
+    </p>
+  </header>
+
+  <section>
+    <div class="row">
+      <h2>Same person?</h2>
+      {% if suggested %}
+      <button class="primary" hx-post="/proposals/accept-suggested" hx-target="#roster" hx-swap="outerHTML">
+        Accept all {{ suggested }} suggested
+      </button>
+      {% endif %}
+    </div>
+    {% if error %}<p class="warn" role="alert">{{ error }}</p>{% endif %}
+    <p class="hint">Proposed by geometry and Muse Spark; nothing merges until you say so. Suggested = Spark ≥ 0.9
+      (on known-answer tests: no false matches at that level).</p>
+    {% for p in open %}
+    <article class="prop {{ p.status }}">
+      <div class="pair">{{ track_card(p.a) }}<span class="vs">=?</span>{{ track_card(p.b) }}</div>
+      <div class="why">
+        <p><span class="badge {{ p.status }}">{{ p.status }}</span>
+          {{ "within one clip" if p.scope == "within" else "across clips" }} ·
+          Spark {{ "%.2f"|format(p.spark.confidence) }}
+          {% if p.geometry %}· gap {{ p.geometry.gap_s }}s · moved {{ "%.0f"|format(p.geometry.distance * 100) }}%{% endif %}
+        </p>
+        <p class="evidence">“{{ p.spark.evidence }}”</p>
+        {% if p.status == "conflict" %}<p class="warn">Two people seen together were both matched to this one.</p>{% endif %}
+        <p class="actions">
+          <button class="yes" hx-post="/proposals/decide" hx-vals='{"pid": "{{ p.id }}", "accept": "true"}'
+                  hx-target="#roster" hx-swap="outerHTML">Same person</button>
+          <button class="no" hx-post="/proposals/decide" hx-vals='{"pid": "{{ p.id }}", "accept": "false"}'
+                  hx-target="#roster" hx-swap="outerHTML">Different</button>
+          {% if p.spark.sheet %}<a href="/media/{{ p.spark.sheet }}" target="_blank">what Spark saw</a>{% endif %}
+        </p>
+      </div>
+    </article>
+    {% else %}
+    <p class="empty">Nothing to review.</p>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>Guests</h2>
+    <div class="grid">
+      {% for g in guests %}
+      <article class="person {{ 'confirmed' if g.confirmed }}">
+        <img src="/media/{{ g.thumb }}" alt="{{ g.label }}" loading="lazy">
+        <div class="meta">
+          <p><b>{{ g.label }}</b> {% if g.confirmed %}<span class="badge accepted">confirmed</span>{% endif %}</p>
+          <input name="name" value="{{ g.name }}" placeholder="name (optional)" aria-label="Name for {{ g.label }}"
+                 hx-post="/people/name" hx-trigger="change" hx-vals='{"pid": "{{ g.id }}"}'
+                 hx-target="#roster" hx-swap="outerHTML">
+          <p class="small">{{ "%.1f"|format(g.seconds) }}s on screen · {{ g.clips|join(", ") }}
+            {% if g.tracks|length > 1 %}· {{ g.tracks|length }} fragments{% endif %}</p>
+          {% if not g.confirmed %}
+          <button hx-post="/people/confirm" hx-vals='{"pid": "{{ g.id }}"}' hx-target="#roster"
+                  hx-swap="outerHTML">Confirm</button>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <details>
+      <summary>Crowd ({{ crowd|length }}) — too brief or too small for a film, still covered by consent</summary>
+      <div class="crowd">
+        {% for c in crowd %}<img src="/media/{{ c.thumb }}" alt="{{ c.label }}" title="{{ c.label }} · {{ c.seconds }}s" loading="lazy">{% endfor %}
+      </div>
+    </details>
+    {% if decided %}
+    <details>
+      <summary>Decided ({{ decided|length }})</summary>
+      <ul class="log">
+        {% for p in decided %}<li>{{ p.a }} = {{ p.b }} → <b>{{ p.status }}</b>{% if p.decided_by %} by {{ p.decided_by }}{% endif %}</li>{% endfor %}
+      </ul>
+    </details>
+    {% endif %}
+  </section>
+</main>
+{%- endmacro %}
+
+{% if fragment %}{{ body() }}{% else %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guestlist roster</title>
+<script src="https://unpkg.com/htmx.org@1.9.12/dist/htmx.min.js"></script>
+<style>
+  :root { --bg:#0e0f13; --panel:#171920; --line:#272a33; --text:#e9eaee; --dim:#9a9caa; --gold:#ffc800;
+          --green:#4ade80; --red:#f87171; --blue:#60a5fa; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.45 system-ui,-apple-system,sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:20px 16px 60px; }
+  h1 { margin:0; font-size:26px; } h1 span { color:var(--gold); font-weight:500; }
+  h2 { font-size:18px; margin:0; }
+  .top { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px;
+         border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:18px; }
+  .stats { color:var(--dim); margin:0; } .stats b { color:var(--text); }
+  section { margin:26px 0; }
+  .row { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .hint, .small, .empty { color:var(--dim); font-size:13px; }
+  button { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:8px;
+           padding:7px 12px; font:inherit; cursor:pointer; }
+  button:hover { border-color:var(--dim); }
+  button.primary { background:var(--gold); color:#111; border-color:var(--gold); font-weight:600; }
+  button.yes { border-color:var(--green); color:var(--green); } button.no { border-color:var(--red); color:var(--red); }
+  .prop { display:grid; grid-template-columns:minmax(0,300px) 1fr; gap:16px; background:var(--panel);
+          border:1px solid var(--line); border-radius:12px; padding:12px; margin:10px 0; }
+  .prop.suggested { border-color:#665000; } .prop.conflict { border-color:#7f1d1d; }
+  .pair { display:flex; align-items:center; gap:6px; }
+  .vs { color:var(--dim); font-weight:600; }
+  .crop { margin:0; flex:1; min-width:0; }
+  .crop img, .person img { width:100%; aspect-ratio:2/3; object-fit:contain; background:#000; border-radius:8px; display:block; }
+  .crop figcaption { font-size:12px; color:var(--dim); margin-top:4px; }
+  .why p { margin:0 0 8px; } .evidence { color:var(--dim); font-style:italic; }
+  .warn { color:var(--red); } .actions { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .actions a { color:var(--blue); font-size:13px; }
+  .badge { font-size:11px; text-transform:uppercase; letter-spacing:.04em; padding:2px 7px; border-radius:99px;
+           background:var(--line); color:var(--dim); }
+  .badge.suggested { background:var(--gold); color:#111; } .badge.conflict { background:var(--red); color:#111; }
+  .badge.accepted { background:var(--green); color:#111; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin-top:12px; }
+  .person { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:8px; }
+  .person.confirmed { border-color:#166534; }
+  .meta p { margin:6px 0; }
+  .meta input { width:100%; background:var(--bg); color:var(--text); border:1px solid var(--line);
+                border-radius:6px; padding:6px 8px; font:inherit; }
+  .crowd { display:grid; grid-template-columns:repeat(auto-fill,minmax(54px,1fr)); gap:6px; margin-top:10px; }
+  .crowd img { width:100%; aspect-ratio:2/3; object-fit:contain; background:#000; border-radius:4px; }
+  details { margin:10px 0; } summary { cursor:pointer; color:var(--dim); }
+  .log { color:var(--dim); font-size:13px; }
+  @media (max-width:640px) { .prop { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>{{ body() }}</body>
+</html>{% endif %}

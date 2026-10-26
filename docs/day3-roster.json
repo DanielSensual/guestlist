@@ -1,0 +1,3756 @@
+{
+  "date": "2026-10-26 19:11 EDT",
+  "clips": {
+    "spike60": {
+      "start_s_in_source": 30.0,
+      "tracks": 111,
+      "guests": 28,
+      "eligible": 74,
+      "sam_usd": 0.3168,
+      "still_saturated": [
+        [
+          54,
+          120
+        ],
+        [
+          162,
+          228
+        ],
+        [
+          216,
+          282
+        ],
+        [
+          540,
+          606
+        ]
+      ]
+    },
+    "later60": {
+      "start_s_in_source": 120.0,
+      "tracks": 101,
+      "guests": 26,
+      "eligible": 67,
+      "sam_usd": 0.264,
+      "still_saturated": [
+        [
+          54,
+          120
+        ],
+        [
+          216,
+          282
+        ],
+        [
+          270,
+          336
+        ],
+        [
+          378,
+          444
+        ]
+      ]
+    }
+  },
+  "spend": {
+    "this_run_usd": 0.0,
+    "ledger_total_usd": 3.6661
+  },
+  "eval": {
+    "cases": 29,
+    "by_effort": {
+      "low": {
+        "usd": 0.3445,
+        "at": [
+          {
+            "threshold": 0.0,
+            "found": 21,
+            "of_positives": 29,
+            "wrong_person_on_positives": 7,
+            "false_match_on_negatives": 21,
+            "of_negatives": 29
+          },
+          {
+            "threshold": 0.5,
+            "found": 21,
+            "of_positives": 29,
+            "wrong_person_on_positives": 7,
+            "false_match_on_negatives": 21,
+            "of_negatives": 29
+          },
+          {
+            "threshold": 0.7,
+            "found": 17,
+            "of_positives": 29,
+            "wrong_person_on_positives": 5,
+            "false_match_on_negatives": 11,
+            "of_negatives": 29
+          },
+          {
+            "threshold": 0.8,
+            "found": 15,
+            "of_positives": 29,
+            "wrong_person_on_positives": 2,
+            "false_match_on_negatives": 4,
+            "of_negatives": 29
+          },
+          {
+            "threshold": 0.9,
+            "found": 9,
+            "of_positives": 29,
+            "wrong_person_on_positives": 1,
+            "false_match_on_negatives": 0,
+            "of_negatives": 29
+          }
+        ],
+        "rows": [
+          {
+            "tag": "spike60-0a-t",
+            "truth": "E",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.95,
+            "usd": 0.0039502,
+            "evidence": "Both QUERY and E show a man in a white cap, light polo shirt, white shorts and white shoes dancing with a woman in a black dress."
+          },
+          {
+            "tag": "spike60-0a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.92,
+            "usd": 0.00605745,
+            "evidence": "QUERY is a man in a white cap, light shirt and white shorts, while no candidate shows that same outfit, build and cap."
+          },
+          {
+            "tag": "spike60-1a-t",
+            "truth": "E",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.95,
+            "usd": 0.0072907,
+            "evidence": "Both show a light-skinned blonde with a ponytail wearing a dark strapless short flared dress and light shoes dancing with arms extended."
+          },
+          {
+            "tag": "spike60-1a-n",
+            "truth": "none",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.78,
+            "usd": 0.00471445,
+            "evidence": "Both show a blonde ponytail dancer in a short dark strapless flared dress with bare legs and light flat shoes in similar dance poses."
+          },
+          {
+            "tag": "spike60-81a-t",
+            "truth": "A",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.0051657,
+            "evidence": "Both QUERY and A show a slender person under purple light with arm raised high, wearing a dark sleeveless top and light-colored shorts/bottoms."
+          },
+          {
+            "tag": "spike60-81a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.65,
+            "usd": 0.00906645,
+            "evidence": "Query shows dark sleeveless top with light long lower garment and raised arm, which no candidate reproduces in clothing and build."
+          },
+          {
+            "tag": "spike60-70a-t",
+            "truth": "D",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.88,
+            "usd": 0.0042987,
+            "evidence": "Both show long dark hair with a light top and light high-waisted shorts and white shoes from back and side views under pink-purple light."
+          },
+          {
+            "tag": "spike60-70a-n",
+            "truth": "none",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.0051607,
+            "evidence": "Both QUERY and E show a slender woman with long dark hair wearing light short shorts and light shoes."
+          },
+          {
+            "tag": "spike60-15a-t",
+            "truth": "B",
+            "match": "B",
+            "also_same": [],
+            "confidence": 0.96,
+            "usd": 0.00398845,
+            "evidence": "Candidate B shows the same bare back and shiny sequined long flared pants with identical pink-blue reflections in the same back-view dance pose as QUERY."
+          },
+          {
+            "tag": "spike60-15a-n",
+            "truth": "none",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.6,
+            "usd": 0.005394449999999999,
+            "evidence": "Both QUERY and D show the same tight full-length highly reflective purple-blue pants/leggings with a bare-backed upper body and similar build and hair."
+          },
+          {
+            "tag": "spike60-7a-t",
+            "truth": "E",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.95,
+            "usd": 0.00376745,
+            "evidence": "QUERY and E wear the same loose floral-patterned short-sleeve shirt and dark loose pants with same build under purple-blue light."
+          },
+          {
+            "tag": "spike60-7a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.95,
+            "usd": 0.0048037,
+            "evidence": "QUERY wears a colorful floral-pattern short-sleeve shirt with dark long pants, while A wears light shirt and white shorts, B-C-D are women in dresses or shiny pants, and E wears a solid magenta outfit with no pattern."
+          },
+          {
+            "tag": "spike60-50a-t",
+            "truth": "E",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.0100957,
+            "evidence": "Both QUERY and E show the same tall slim build in a dark purple mask with a contiguous full-body silhouette and a wider dress-like lower shape in one frame."
+          },
+          {
+            "tag": "spike60-50a-n",
+            "truth": "none",
+            "match": "B",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.00838645,
+            "evidence": "The QUERY silhouettes show a short flared dress, ponytail head shape, and solo dance poses with arm raised, arm extended with leg lifted, and skirt flaring that match B's blonde ponytail, dark short dress, and same three poses."
+          },
+          {
+            "tag": "spike60-66a-t",
+            "truth": "C",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.45,
+            "usd": 0.010463950000000001,
+            "evidence": "Query shows long loose hair with a dark top and light pink-lit lower body in dance poses, while no candidate reproduces that same hair, clothing contrast and build across frames."
+          },
+          {
+            "tag": "spike60-66a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.75,
+            "usd": 0.0058817,
+            "evidence": "Both show the same pink-purple lit figure with long dark hair, dark crop top and light loose pants in similar dance poses."
+          },
+          {
+            "tag": "spike60-26a-t",
+            "truth": "C",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.9,
+            "usd": 0.00313695,
+            "evidence": "Both QUERY and candidate C wear a dark top with light, highly reflective shiny pants unlike the dresses or blue pants in other candidates."
+          },
+          {
+            "tag": "spike60-26a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.68,
+            "usd": 0.00673275,
+            "evidence": "Both show a slim person with long reddish hair wearing a dark top and light tight reflective pants, unlike the dress in B and the all-white outfit/dress in A."
+          },
+          {
+            "tag": "spike60-9a-t",
+            "truth": "B",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.00647045,
+            "evidence": "Both QUERY and D show the same uniform dark blue-purple body with no bright white, pink, or reflective clothing, same slim build and full-length leg coverage."
+          },
+          {
+            "tag": "spike60-9a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.68,
+            "usd": 0.005139449999999999,
+            "evidence": "Both show the same slim build rendered as a solid deep blue-purple silhouette under the same lighting, with matching arm-up pose and leg shape, unlike the normally-exposed or pink-sequined costumes in other candidates."
+          },
+          {
+            "tag": "spike60-90a-t",
+            "truth": "C",
+            "match": "D",
+            "also_same": [
+              "E"
+            ],
+            "confidence": 0.62,
+            "usd": 0.0088547,
+            "evidence": "QUERY and D/E show the same blue-lit woman with long hair in a short dress with similar build and leg stance."
+          },
+          {
+            "tag": "spike60-90a-n",
+            "truth": "none",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.0067757,
+            "evidence": "QUERY shows a slim figure in a short dress rendered blue-purple by dark club lighting, matching D's same blue-lit short-dress silhouette and build, while B is lit normally, A and E are different clothing/build, and C is brighter with different pose/hair glow."
+          },
+          {
+            "tag": "spike60-74a-t",
+            "truth": "A",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.0064662,
+            "evidence": "QUERY and A both show a tall slender full-body purple silhouette with legs together and arms down, unlike B/C/E in light clothes and D/F with raised arm or different build."
+          },
+          {
+            "tag": "spike60-74a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.75,
+            "usd": 0.0047357,
+            "evidence": "Both show a tall build in strong purple light with a dark sleeveless top and light loose lower garments and a raised right arm pose."
+          },
+          {
+            "tag": "spike60-44a-t",
+            "truth": "D",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.78,
+            "usd": 0.0047832,
+            "evidence": "Both show a tall slender build in a dark top and long pants glowing purple-blue with a similar crossed-arms stance under the same lighting."
+          },
+          {
+            "tag": "spike60-44a-n",
+            "truth": "none",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.65,
+            "usd": 0.0041492,
+            "evidence": "Both show a tall slim person in dark long pants and dark top under magenta-purple light standing in side profile with arms crossed."
+          },
+          {
+            "tag": "later60-1a-t",
+            "truth": "B",
+            "match": "B",
+            "also_same": [],
+            "confidence": 0.97,
+            "usd": 0.00357195,
+            "evidence": "Both show a blonde ponytail dancer in a short dark strapped dress with light shoes in similar dancing poses."
+          },
+          {
+            "tag": "later60-1a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.92,
+            "usd": 0.00542845,
+            "evidence": "QUERY shows a blonde ponytail woman in a dark short dress with light shoes dancing, while A is a man in white cap and shorts and B-E show different hair lengths, clothing colors/shapes or fragmented masks with no clear same details."
+          },
+          {
+            "tag": "later60-5a-t",
+            "truth": "D",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.98,
+            "usd": 0.0032829499999999998,
+            "evidence": "Both wear a white cap backwards, a light tan short-sleeve shirt, white shorts and white shoes with same build and dance motion."
+          },
+          {
+            "tag": "later60-5a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.96,
+            "usd": 0.00372845,
+            "evidence": "QUERY is a man in a light tan shirt, white shorts, white cap and white sneakers, while A is a woman in a dark dress and B-E are fragmented differently-dressed figures with no matching clothing or cap."
+          },
+          {
+            "tag": "later60-58a-t",
+            "truth": "B",
+            "match": "B",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.0033834499999999997,
+            "evidence": "Both show a woman with long hair wearing a light top, blue shorts and white shoes with matching build and colors across frames."
+          },
+          {
+            "tag": "later60-58a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.0055927,
+            "evidence": "QUERY shows long hair with a light top and light short shorts and bare legs, while A wears a dark mini dress, B is a male in cap with light shirt and longer white shorts, and C shows a long lower covering not short shorts."
+          },
+          {
+            "tag": "later60-87a-t",
+            "truth": "E",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.95,
+            "usd": 0.0075457,
+            "evidence": "QUERY frames 1-2 show the same raised-arm then arms-forward dance poses, short-dress silhouette, and light shoes as A frames 1-2."
+          },
+          {
+            "tag": "later60-87a-n",
+            "truth": "none",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.8,
+            "usd": 0.0051012,
+            "evidence": "The short dark dress, bare legs, light flat shoes, tied-back hair and raised-arm dancing pose in QUERY match candidate A."
+          },
+          {
+            "tag": "later60-37a-t",
+            "truth": "F",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.78,
+            "usd": 0.00630895,
+            "evidence": "Both QUERY and C show the same fragmented narrow view with bright magenta-pink upper-body patches paired with dark blue-purple lower-leg shapes."
+          },
+          {
+            "tag": "later60-37a-n",
+            "truth": "none",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.0053476999999999995,
+            "evidence": "Query and D both show a small figure with hot pink-magenta upper torso and deep blue-purple lower dress/legs with similar fragmented shape."
+          },
+          {
+            "tag": "later60-16a-t",
+            "truth": "F",
+            "match": "F",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.00618145,
+            "evidence": "The clear QUERY middle frame shows long hair with a dark top and light long pants and light shoes, matching F's middle and right frames in clothing, build, and coloring."
+          },
+          {
+            "tag": "later60-16a-n",
+            "truth": "none",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.68,
+            "usd": 0.0071157,
+            "evidence": "QUERY middle frame shows long hair with a dark top and uniformly light bare legs and light shoes, matching candidate A's dark short dress, light skin legs, light shoes and long hair."
+          },
+          {
+            "tag": "later60-73a-t",
+            "truth": "A",
+            "match": "A",
+            "also_same": [
+              "B"
+            ],
+            "confidence": 0.82,
+            "usd": 0.010123950000000001,
+            "evidence": "Query's lower flared dress blob and small head with no long-hair mass matches A's same blue-purple dress shapes and B's short black strap dress on the slender hair-up dancer."
+          },
+          {
+            "tag": "later60-73a-n",
+            "truth": "none",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.72,
+            "usd": 0.00481495,
+            "evidence": "QUERY's solid short-dress lower silhouette and tall thin raised-arm shape in the third frame match candidate A's short dark dress and raised-arm dance pose, unlike B's shorts-shirt male or C's long-hair separates."
+          },
+          {
+            "tag": "later60-14a-t",
+            "truth": "A",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.95,
+            "usd": 0.00691595,
+            "evidence": "Both show a bare torso lit pink-magenta with highly reflective iridescent blue-purple long pants in the same dancing pose."
+          },
+          {
+            "tag": "later60-14a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.00828795,
+            "evidence": "Both QUERY and C show only fragmented bright magenta-purple glowing shapes with a long shiny lower garment to the feet, unlike A's dark short dress and B's light shirt-white shorts full-body views."
+          },
+          {
+            "tag": "later60-27a-t",
+            "truth": "C",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.85,
+            "usd": 0.00374545,
+            "evidence": "QUERY full body and fragments show same purple-lit patterned shirt and dark pants/build as C across its three frames, unlike A/B/D/E clothing."
+          },
+          {
+            "tag": "later60-27a-n",
+            "truth": "none",
+            "match": "A",
+            "also_same": [
+              "D"
+            ],
+            "confidence": 0.78,
+            "usd": 0.010905950000000001,
+            "evidence": "QUERY split upper-torso and bright bare lower-leg with light shoe and reddish chest matches A's black short dress with red top, bare legs and light shoes, same fragments seen in D."
+          },
+          {
+            "tag": "later60-26a-t",
+            "truth": "E",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.72,
+            "usd": 0.0050466999999999995,
+            "evidence": "Both show a medium-stocky rear-view figure in a dark short-sleeve top and blue jeans under dark purple-blue lighting with matching build and silhouette."
+          },
+          {
+            "tag": "later60-26a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.75,
+            "usd": 0.0040642,
+            "evidence": "Both wear a dark top and loose blue long pants with similar medium-stocky build seen under blue-purple lighting."
+          },
+          {
+            "tag": "later60-61a-t",
+            "truth": "C",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.9,
+            "usd": 0.0035252,
+            "evidence": "Both show the same build in a loose floral-patterned shirt glowing purple-pink with dark long pants under the same lighting."
+          },
+          {
+            "tag": "later60-61a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.7,
+            "usd": 0.00623595,
+            "evidence": "QUERY shows a standing figure in long pants and a mottled patterned top under purple light, with no short dark dress like A, white shorts and cap like B, long hair/short outfit like C, long sequined gown like D, or solid pink side-profile top like E."
+          },
+          {
+            "tag": "later60-88a-t",
+            "truth": "D",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.78,
+            "usd": 0.0072177,
+            "evidence": "Both show a slim figure with a bright pink cropped upper, dark midriff gap, and speckled purple tight leggings with bright shoes."
+          },
+          {
+            "tag": "later60-88a-n",
+            "truth": "none",
+            "match": "C",
+            "also_same": [],
+            "confidence": 0.68,
+            "usd": 0.0054022,
+            "evidence": "Both QUERY and C show a slim figure with a bright pink bare upper back/torso and purple speckled long leggings separated by a dark midriff gap, unlike A's short dark dress, B's light shirt-white shorts and cap, or D's bulky solid purple mass."
+          },
+          {
+            "tag": "later60-65a-t",
+            "truth": "A",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.75,
+            "usd": 0.0037736999999999996,
+            "evidence": "QUERY and candidate A both show a pink-lit upper body with dark shiny purple pants, unlike B in a black dress or C in a light shirt with white shorts and cap."
+          },
+          {
+            "tag": "later60-65a-n",
+            "truth": "none",
+            "match": "none",
+            "also_same": [],
+            "confidence": 0.9,
+            "usd": 0.004267,
+            "evidence": "QUERY wears a pink top with full-length dark sparkly pants, while A wears a short dark dress with bare legs and B wears a light shirt with white shorts and a white cap."
+          },
+          {
+            "tag": "later60-84a-t",
+            "truth": "D",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.8,
+            "usd": 0.0077922,
+            "evidence": "Both show a slender woman in a short dark sleeveless dress with bare legs and light shoes, hair pulled back, in dancing poses whose arm-leg silhouettes match the QUERY outline."
+          },
+          {
+            "tag": "later60-84a-n",
+            "truth": "none",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.78,
+            "usd": 0.010885450000000001,
+            "evidence": "Both are a slim woman seen in side profile with bright fluorescent bare skin on head/torso/legs split by a dark short skirt/shorts that shows light speckled reflections, matching shape and fragmentation across frames."
+          },
+          {
+            "tag": "later60-33a-t",
+            "truth": "E",
+            "match": "E",
+            "also_same": [],
+            "confidence": 0.62,
+            "usd": 0.0066652,
+            "evidence": "Both QUERY and E show the same slender build with long legs in side-profile under purple-blue light, with a bright leg and fragmented torso consistent across frames."
+          },
+          {
+            "tag": "later60-33a-n",
+            "truth": "none",
+            "match": "A",
+            "also_same": [],
+            "confidence": 0.88,
+            "usd": 0.0036809499999999997,
+            "evidence": "Both QUERY and candidate A show a slender woman in a short dark dress dancing with one arm raised high and bare legs lit purple."
+          },
+          {
+            "tag": "later60-64a-t",
+            "truth": "D",
+            "match": "D",
+            "also_same": [],
+            "confidence": 0.65,
+            "usd": 0.0076632,
+            "evidence": "Both show a short-haired figure in a light blue-lit top seen from behind with matching purple-magenta fragments in the narrow crops."
+          },
+          {
+            "tag": "later60-64a-n",
+            "truth": "none",
+            "match": "B",
+            "also_same": [],
+            "confidence": 0.65,
+            "usd": 0.0051889499999999995,
+            "evidence": "QUERY shows bright light-colored clothing glowing blue-purple with short hair and broad build matching B's light t-shirt, white shorts and cap, unlike A's dark dress or C's long dark hair."
+          }
+        ]
+      }
+    }
+  },
+  "within": {
+    "queries": 88,
+    "no_answer": 0,
+    "spark_said_none": 19,
+    "suggested": 2,
+    "pending": 27
+  },
+  "people": {
+    "total": 204,
+    "guests": 47,
+    "in_both_clips": 5,
+    "tracks": 212
+  },
+  "accepted_by_script": {
+    "after_within": 0,
+    "after_across": 6
+  },
+  "across": {
+    "queries": 16,
+    "gallery": 16,
+    "sheets": 32,
+    "suggested": 6,
+    "pending": 3,
+    "conflict": 3
+  },
+  "moments": {
+    "by_guest": {
+      "spike60 #1": {
+        "span_s": [
+          0.0,
+          60.0
+        ],
+        "usd": 0.0289,
+        "summary": "A man in a white cap, light shirt and white shorts partner-dances throughout with a woman in a black dress, leading overhead turns, spins, dips and close-hold moves under club lights.",
+        "moments": [
+          {
+            "confidence": 0.95,
+            "score": 8.5,
+            "t_end": 5.0,
+            "t_start": 0.0,
+            "what": "#1 holds both of #2's hands overhead and leads her through turns into a close hold.",
+            "why_it_matters": "Strong opening for #1's film showing his lead and connection with his partner.",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 0.0,
+              "t_end": 5.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.95,
+            "score": 8.0,
+            "t_end": 10.0,
+            "t_start": 5.0,
+            "what": "#1 guides #2 through body rolls and a back-to-chest close embrace while stepping in rhythm.",
+            "why_it_matters": "Highlights #1's smooth partner work and control in close position.",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 5.0,
+              "t_end": 10.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 8.0,
+            "t_end": 18.5,
+            "t_start": 13.5,
+            "what": "#1 leads #2 in side turns and dips her low while maintaining hand contact.",
+            "why_it_matters": "Dynamic dip and turn sequence that showcases #1 as an active lead.",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 13.5,
+              "t_end": 18.5,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 9.0,
+            "t_end": 32.0,
+            "t_start": 27.0,
+            "what": "#1 raises joined hands high and spins #2 under his arm in a continuous turn pattern.",
+            "why_it_matters": "Clean overhead spin moment ideal for a highlight cut of #1 leading.",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 27.0,
+              "t_end": 32.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 8.0,
+            "t_end": 39.0,
+            "t_start": 34.0,
+            "what": "#1 sweeps his arm over #2's head to turn her, then pulls back to open position.",
+            "why_it_matters": "Shows #1's styling and timing during an extended turn combination.",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 34.0,
+              "t_end": 39.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 7.5,
+            "t_end": 59.9,
+            "t_start": 54.0,
+            "what": "#1 dances in open hold with #2, extending arms, stepping side to side and smiling while leading hand changes.",
+            "why_it_matters": "Relaxed closing section showing #1's presence and enjoyment on the floor.",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 54.0,
+              "t_end": 59.9,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.9
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.9
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #2": {
+        "span_s": [
+          0.0,
+          60.0
+        ],
+        "usd": 0.0297,
+        "summary": "A blonde woman in a black short dress with a white hair clip dances continuously as the follow with her partner at the center of a crowded, lit club floor.",
+        "moments": [
+          {
+            "confidence": 0.95,
+            "score": 9.0,
+            "t_end": 5.5,
+            "t_start": 0.0,
+            "what": "#2 holds hands with #1 and spins under his raised arm, stepping and turning in close time.",
+            "why_it_matters": "Opening partner spin establishes #2 as active follow and shows her smile and movement for her highlight.",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 0.0,
+              "t_end": 5.5,
+              "people": {
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.5,
+            "t_end": 11.5,
+            "t_start": 6.5,
+            "what": "#2 dances chest-to-chest with #1 behind her, doing body rolls and hip sways while he guides her waist.",
+            "why_it_matters": "Shows #2's confident solo body movement while staying connected to her partner.",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 6.5,
+              "t_end": 11.5,
+              "people": {
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 8.0,
+            "t_end": 20.5,
+            "t_start": 15.5,
+            "what": "#2 bends forward, swings her ponytail, then turns out to arm's length and back into #1.",
+            "why_it_matters": "Dynamic bend and recovery is a peak expressive move worth keeping for #2.",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 15.5,
+              "t_end": 20.5,
+              "people": {
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.94,
+            "score": 9.0,
+            "t_end": 31.5,
+            "t_start": 26.5,
+            "what": "#2 raises both arms overhead and performs continuous turns under #1's hand, dress flaring.",
+            "why_it_matters": "Clean extended spin sequence keeps #2 clearly visible and centered.",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 26.5,
+              "t_end": 31.5,
+              "people": {
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 7.5,
+            "t_end": 44.5,
+            "t_start": 39.5,
+            "what": "#2 dances in close embrace with #1, smiling, stepping side to side while others dance and film nearby.",
+            "why_it_matters": "Shows #2 enjoying the social floor and her interaction amid the crowd.",
+            "with": [
+              "#1",
+              "#6",
+              "#19",
+              "#20"
+            ],
+            "check": {
+              "t_start": 39.5,
+              "t_end": 44.5,
+              "people": {
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#19": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#20": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.0,
+            "t_end": 57.0,
+            "t_start": 52.0,
+            "what": "#2 extends her arm, steps in sync with #1, laughs and keeps hand contact through side steps and a final turn.",
+            "why_it_matters": "Closing connection and happy expression gives a strong end beat for #2's film.",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 52.0,
+              "t_end": 57.0,
+              "people": {
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #6": {
+        "span_s": [
+          6.33,
+          47.25
+        ],
+        "usd": 0.0247,
+        "summary": "A background guest in dark clothing who spends the clip dancing on the edges of the crowded, colorfully lit dance floor.",
+        "moments": [
+          {
+            "confidence": 0.65,
+            "score": 4.0,
+            "t_end": 9.83,
+            "t_start": 7.33,
+            "what": "Dances in the background on the right side of the floor, moving with arms extended while the foreground couple dances.",
+            "why_it_matters": "Establishes #6 on the dance floor early for their own highlight.",
+            "with": [
+              "#1",
+              "#2",
+              "#5"
+            ],
+            "check": {
+              "t_start": 7.333333333333333,
+              "t_end": 9.833333333333332,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 2.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.5
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.5
+                },
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 2.5
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.75,
+            "score": 6.0,
+            "t_end": 37.83,
+            "t_start": 33.83,
+            "what": "Dances in the mid-background, stepping and swaying with arm movement as the foreground couple turns.",
+            "why_it_matters": "Shows #6 with clear full-body visibility actively dancing.",
+            "with": [
+              "#1",
+              "#2",
+              "#18"
+            ],
+            "check": {
+              "t_start": 33.833333333333336,
+              "t_end": 37.833333333333336,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 2.75
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 4.0
+                },
+                "#18": {
+                  "status": "supported",
+                  "on_screen_s": 1.75
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.8,
+            "score": 6.5,
+            "t_end": 43.33,
+            "t_start": 38.83,
+            "what": "Dances on the left background beside another guest, stepping in rhythm and moving arms while others dance and film nearby.",
+            "why_it_matters": "Longest clear view of #6 dancing for their highlight film.",
+            "with": [
+              "#1",
+              "#2",
+              "#19",
+              "#20"
+            ],
+            "check": {
+              "t_start": 38.833333333333336,
+              "t_end": 43.333333333333336,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 4.42
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#19": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#20": {
+                  "status": "supported",
+                  "on_screen_s": 2.67
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.75,
+            "score": 5.5,
+            "t_end": 46.83,
+            "t_start": 43.83,
+            "what": "Continues dancing on the left background, turning and moving arms as the foreground couple dances.",
+            "why_it_matters": "Keeps #6 visible dancing to close their section of the night.",
+            "with": [
+              "#1",
+              "#2",
+              "#19"
+            ],
+            "check": {
+              "t_start": 43.833333333333336,
+              "t_end": 46.833333333333336,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 2.08
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#19": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #19": {
+        "span_s": [
+          37.83,
+          51.17
+        ],
+        "usd": 0.0119,
+        "summary": "A dark-silhouetted figure in dark clothing stands at the side of the neon-lit dance floor holding a phone overhead to record the dancing couple for most of the clip.",
+        "moments": [
+          {
+            "confidence": 0.85,
+            "score": 6,
+            "t_end": 42.03,
+            "t_start": 38.73,
+            "what": "#19 stands at the right edge of the dance floor with right arm raised high holding a lit smartphone to record the dancing couple",
+            "why_it_matters": "Shows #19 actively documenting the event as the foreground couple dances",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 38.733333333333334,
+              "t_end": 42.03333333333334,
+              "people": {
+                "#19": {
+                  "status": "supported",
+                  "on_screen_s": 3.14
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.3
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 3.3
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.85,
+            "score": 5,
+            "t_end": 45.83,
+            "t_start": 42.03,
+            "what": "#19 keeps the phone held overhead, remaining in place while #1 and #2 spin and embrace in front",
+            "why_it_matters": "Continued coverage of #19 watching and filming the same dance",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 42.03333333333334,
+              "t_end": 45.833333333333336,
+              "people": {
+                "#19": {
+                  "status": "supported",
+                  "on_screen_s": 3.8
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.8
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 3.8
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.8,
+            "score": 5,
+            "t_end": 49.33,
+            "t_start": 45.83,
+            "what": "#19 still holds the phone aloft filming as the dancers move across the floor",
+            "why_it_matters": "Completes #19's steady filming action for their highlight",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 45.833333333333336,
+              "t_end": 49.333333333333336,
+              "people": {
+                "#19": {
+                  "status": "supported",
+                  "on_screen_s": 3.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.5
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #5": {
+        "span_s": [
+          5.08,
+          12.83
+        ],
+        "usd": 0.0162,
+        "summary": "A background guest in dark clothing dances on the left side of the floor, first solo and then with a partner, under colorful club lighting.",
+        "moments": [
+          {
+            "confidence": 0.75,
+            "score": 6.0,
+            "t_end": 8.58,
+            "t_start": 6.08,
+            "what": "#5 dances in the background on the left side of the floor, stepping and extending arms under club lights while the central couple dances in the foreground.",
+            "why_it_matters": "Gives a clear full-body view of #5 dancing on their own for their highlight cut.",
+            "with": [],
+            "check": {
+              "t_start": 6.083333333333333,
+              "t_end": 8.583333333333332,
+              "people": {
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 2.5
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.65,
+            "score": 7.0,
+            "t_end": 11.58,
+            "t_start": 8.58,
+            "what": "#5 continues dancing on the left side, moving closely with a partner, swaying and turning together.",
+            "why_it_matters": "Shows #5 social dancing with a partner, the most usable interaction for #5's own film.",
+            "with": [
+              "#8"
+            ],
+            "check": {
+              "t_start": 8.583333333333332,
+              "t_end": 11.583333333333332,
+              "people": {
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#8": {
+                  "status": "weak",
+                  "on_screen_s": 0.32
+                }
+              },
+              "status": "review"
+            }
+          }
+        ]
+      },
+      "spike60 #4": {
+        "span_s": [
+          1.42,
+          9.0
+        ],
+        "usd": 0.01,
+        "summary": "#4, a dimly lit figure in dark clothing in the right background, dances in place throughout the clip while the central couple dances in the foreground.",
+        "moments": [
+          {
+            "confidence": 0.6,
+            "score": 4,
+            "t_end": 4.92,
+            "t_start": 2.22,
+            "what": "#4 stands in the right background and moves arms and upper body in dance motion",
+            "why_it_matters": "Shows #4 participating in the dancing for #4's own coverage",
+            "with": [],
+            "check": {
+              "t_start": 2.216666666666667,
+              "t_end": 4.916666666666666,
+              "people": {
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 2.45
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.6,
+            "score": 4,
+            "t_end": 8.22,
+            "t_start": 4.92,
+            "what": "#4 continues dancing in the right background, swaying and gesturing with hands",
+            "why_it_matters": "Provides continued visible coverage of #4 dancing while foreground couple dances",
+            "with": [],
+            "check": {
+              "t_start": 4.916666666666666,
+              "t_end": 8.216666666666667,
+              "people": {
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 3.06
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #11": {
+        "span_s": [
+          20.75,
+          29.0
+        ],
+        "usd": 0.0146,
+        "summary": "#11 is a background guest on the right side of the dance floor who stays mostly in place moving lightly to the music while the foreground couple dances.",
+        "moments": [
+          {
+            "confidence": 0.6,
+            "score": 3,
+            "t_end": 23.55,
+            "t_start": 21.55,
+            "what": "#11 is visible in the far right background behind the dancing couple, standing and shifting slightly with the music.",
+            "why_it_matters": "Shows #11 present on the dance floor for their highlight cut.",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 21.55,
+              "t_end": 23.55,
+              "people": {
+                "#11": {
+                  "status": "supported",
+                  "on_screen_s": 1.76
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.55,
+            "score": 3,
+            "t_end": 25.55,
+            "t_start": 23.55,
+            "what": "#11 remains on the right side of the floor in fuller view, staying in place and moving subtly while others dance in the foreground.",
+            "why_it_matters": "Provides the longest continuous view of #11 participating in the party atmosphere.",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 23.55,
+              "t_end": 25.55,
+              "people": {
+                "#11": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #17": {
+        "span_s": [
+          28.0,
+          36.42
+        ],
+        "usd": 0.0211,
+        "summary": "Tagged #17 is a distant background figure on the left side of the crowded dance floor who remains obscured behind the foreground couple and is never clearly visible.",
+        "moments": []
+      },
+      "spike60 #8": {
+        "span_s": [
+          10.25,
+          17.0
+        ],
+        "usd": 0.0224,
+        "summary": "A man in a light shirt, light shorts and a white cap dances closely with a woman in a black dress, leading turns and ending in an embrace.",
+        "moments": [
+          {
+            "confidence": 0.9,
+            "score": 8.0,
+            "t_end": 12.45,
+            "t_start": 10.25,
+            "what": "#8 dances close behind #2, left hand on her waist and right arm extended out while stepping to the beat",
+            "why_it_matters": "Shows #8 as the central male dance partner in sustained close contact, clearly visible for his film",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 10.25,
+              "t_end": 12.45,
+              "people": {
+                "#8": {
+                  "status": "supported",
+                  "on_screen_s": 1.22
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.2
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.85,
+            "score": 8.5,
+            "t_end": 14.55,
+            "t_start": 12.45,
+            "what": "#8 guides #2 through a turn, raising his arm over her and smiling while staying in hold",
+            "why_it_matters": "Captures #8 leading the dance with face visible and joyful interaction",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 12.45,
+              "t_end": 14.55,
+              "people": {
+                "#8": {
+                  "status": "supported",
+                  "on_screen_s": 1.37
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.1
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.85,
+            "score": 9.0,
+            "t_end": 16.55,
+            "t_start": 14.55,
+            "what": "#8 spins #2 around and pulls her into a close front embrace while continuing to move",
+            "why_it_matters": "Peak hug and spin gives a strong emotional closing beat for #8's highlight",
+            "with": [
+              "#2"
+            ],
+            "check": {
+              "t_start": 14.55,
+              "t_end": 16.55,
+              "people": {
+                "#8": {
+                  "status": "supported",
+                  "on_screen_s": 1.44
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #12": {
+        "span_s": [
+          21.5,
+          29.0
+        ],
+        "usd": 0.0071,
+        "summary": "The white-outlined guest stays in the dim background crowd standing and watching while the foreground couple dances, never clearly visible enough for a highlight.",
+        "moments": []
+      },
+      "spike60 #7": {
+        "span_s": [
+          8.0,
+          14.5
+        ],
+        "usd": 0.0118,
+        "summary": "#7, a distant figure in dark clothing in the sky blue outline, dances in the background on the right side of the crowded club dance floor.",
+        "moments": [
+          {
+            "confidence": 0.62,
+            "score": 4.0,
+            "t_end": 10.8,
+            "t_start": 8.8,
+            "what": "#7 dances in the background on the right side of the floor, moving arms and shifting weight under club lights",
+            "why_it_matters": "Shows #7 participating in the group dance, giving them presence in their own highlight",
+            "with": [
+              "#2",
+              "#6"
+            ],
+            "check": {
+              "t_start": 8.8,
+              "t_end": 10.8,
+              "people": {
+                "#7": {
+                  "status": "supported",
+                  "on_screen_s": 1.76
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.44
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.58,
+            "score": 3.0,
+            "t_end": 12.8,
+            "t_start": 11.0,
+            "what": "#7 continues dancing in the background, visible as a small silhouette moving with the music",
+            "why_it_matters": "Keeps #7's continued participation in the event for their film despite distance and low light",
+            "with": [
+              "#2",
+              "#8",
+              "#5"
+            ],
+            "check": {
+              "t_start": 11.0,
+              "t_end": 12.8,
+              "people": {
+                "#7": {
+                  "status": "supported",
+                  "on_screen_s": 0.98
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 1.8
+                },
+                "#8": {
+                  "status": "supported",
+                  "on_screen_s": 1.55
+                },
+                "#5": {
+                  "status": "weak",
+                  "on_screen_s": 0.82
+                }
+              },
+              "status": "review"
+            }
+          }
+        ]
+      },
+      "spike60 #18": {
+        "span_s": [
+          29.67,
+          37.08
+        ],
+        "usd": 0.0136,
+        "summary": "#18 is a background guest in dark clothing seen mostly as a silhouette on the right side of the purple-lit dance floor, standing and swaying while the foreground couple dances.",
+        "moments": [
+          {
+            "confidence": 0.6,
+            "score": 4,
+            "t_end": 32.37,
+            "t_start": 31.57,
+            "what": "#18 is visible in the background on the right side behind #1, standing on the dance floor as the foreground couple dances.",
+            "why_it_matters": "Shows #18 present on the floor during the party, useful establishing presence for #18's film.",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 31.566666666666666,
+              "t_end": 32.36666666666667,
+              "people": {
+                "#18": {
+                  "status": "supported",
+                  "on_screen_s": 0.51
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 0.8
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 0.8
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.7,
+            "score": 5,
+            "t_end": 35.57,
+            "t_start": 34.07,
+            "what": "#18 remains visible in the right background, swaying/dancing in place while #1 and #2 spin in the foreground and #6 is nearby.",
+            "why_it_matters": "Clearest sustained view of #18 dancing in the club atmosphere for #18's highlight.",
+            "with": [
+              "#1",
+              "#2",
+              "#6"
+            ],
+            "check": {
+              "t_start": 34.06666666666667,
+              "t_end": 35.56666666666667,
+              "people": {
+                "#18": {
+                  "status": "supported",
+                  "on_screen_s": 1.18
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.5
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 1.5
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.26
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #25": {
+        "span_s": [
+          55.5,
+          60.0
+        ],
+        "usd": 0.0092,
+        "summary": "#25 appears only as a dark indistinct silhouette in the far left background and is never clearly visible while the foreground couple dances.",
+        "moments": []
+      },
+      "spike60 #9": {
+        "span_s": [
+          11.42,
+          16.83
+        ],
+        "usd": 0.0148,
+        "summary": "A person in a light top and blue pants appears cropped on the far left edge dancing in the background while the central couple dances in focus.",
+        "moments": [
+          {
+            "confidence": 0.62,
+            "score": 3.5,
+            "t_end": 13.92,
+            "t_start": 12.22,
+            "what": "#9 in a light top and blue pants is partially cropped on the far left edge, dancing with arms raised and swaying.",
+            "why_it_matters": "Shows #9 participating in the dance floor activity for their own coverage despite being in the background.",
+            "with": [
+              "#8"
+            ],
+            "check": {
+              "t_start": 12.216666666666667,
+              "t_end": 13.916666666666666,
+              "people": {
+                "#9": {
+                  "status": "supported",
+                  "on_screen_s": 1.46
+                },
+                "#8": {
+                  "status": "supported",
+                  "on_screen_s": 1.13
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.6,
+            "score": 3.0,
+            "t_end": 16.32,
+            "t_start": 13.92,
+            "what": "#9 remains on the far left edge, still cropped, continuing to move and dance beside #8 while the central couple dances in focus.",
+            "why_it_matters": "Extends #9's visible dance participation for their highlight cut.",
+            "with": [
+              "#8",
+              "#2"
+            ],
+            "check": {
+              "t_start": 13.916666666666666,
+              "t_end": 16.316666666666666,
+              "people": {
+                "#9": {
+                  "status": "supported",
+                  "on_screen_s": 1.9
+                },
+                "#8": {
+                  "status": "supported",
+                  "on_screen_s": 1.9
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 2.4
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "spike60 #3": {
+        "span_s": [
+          0.58,
+          5.67
+        ],
+        "usd": 0.0086,
+        "summary": "#3, a dim background figure on the left side of the floor, dances with arm movements while the central couple dances in the foreground.",
+        "moments": [
+          {
+            "confidence": 0.7,
+            "score": 4.0,
+            "t_end": 2.28,
+            "t_start": 1.58,
+            "what": "#3 becomes visible on the far left background and dances with arm movements while the foreground couple dances.",
+            "why_it_matters": "First clear view of #3 actively dancing, establishing their presence on the floor for their film.",
+            "with": [
+              "#1",
+              "#2"
+            ],
+            "check": {
+              "t_start": 1.5833333333333333,
+              "t_end": 2.283333333333333,
+              "people": {
+                "#3": {
+                  "status": "supported",
+                  "on_screen_s": 0.7
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 0.7
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 0.7
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.8,
+            "score": 5.0,
+            "t_end": 4.08,
+            "t_start": 2.28,
+            "what": "#3 continues dancing on the left side, raising and moving arms to the music.",
+            "why_it_matters": "Sustained usable coverage of #3 enjoying the party and dancing, suitable for a highlight cut.",
+            "with": [
+              "#1",
+              "#2",
+              "#4"
+            ],
+            "check": {
+              "t_start": 2.283333333333333,
+              "t_end": 4.083333333333333,
+              "people": {
+                "#3": {
+                  "status": "supported",
+                  "on_screen_s": 1.8
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.8
+                },
+                "#2": {
+                  "status": "supported",
+                  "on_screen_s": 1.8
+                },
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 1.64
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #28": {
+        "span_s": [
+          0.0,
+          60.0
+        ],
+        "usd": 0.0357,
+        "summary": "A woman in a black dress with her hair in a ponytail partner-dances energetically with a man in a white cap across a colorful lit dance floor.",
+        "moments": [
+          {
+            "confidence": 0.95,
+            "score": 8.0,
+            "t_end": 4.0,
+            "t_start": 0.0,
+            "what": "#28 dances facing forward with arms extended then spins under #1's raised arm",
+            "why_it_matters": "Opening clear front view of #28 starting her partner routine",
+            "with": [
+              "#1",
+              "#27",
+              "#29",
+              "#30",
+              "#31"
+            ],
+            "check": {
+              "t_start": 0.0,
+              "t_end": 4.0,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.0
+                },
+                "#27": {
+                  "status": "supported",
+                  "on_screen_s": 2.67
+                },
+                "#29": {
+                  "status": "supported",
+                  "on_screen_s": 2.33
+                },
+                "#30": {
+                  "status": "supported",
+                  "on_screen_s": 2.08
+                },
+                "#31": {
+                  "status": "supported",
+                  "on_screen_s": 2.08
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.95,
+            "score": 8.5,
+            "t_end": 8.5,
+            "t_start": 4.0,
+            "what": "#28 moves into close hold with #1, turns and leans back while holding his hands",
+            "why_it_matters": "Shows #28's close partner connection and turn technique",
+            "with": [
+              "#1",
+              "#5",
+              "#32",
+              "#33"
+            ],
+            "check": {
+              "t_start": 4.0,
+              "t_end": 8.5,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 3.08
+                },
+                "#32": {
+                  "status": "supported",
+                  "on_screen_s": 2.67
+                },
+                "#33": {
+                  "status": "supported",
+                  "on_screen_s": 1.67
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.0,
+            "t_end": 13.5,
+            "t_start": 8.5,
+            "what": "#28 spins away from #1, raises her arm and twirls back to rejoin hands",
+            "why_it_matters": "Highlights #28's solo spin and re-engagement for her reel",
+            "with": [
+              "#1",
+              "#12",
+              "#34",
+              "#35"
+            ],
+            "check": {
+              "t_start": 8.5,
+              "t_end": 13.5,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#12": {
+                  "status": "supported",
+                  "on_screen_s": 3.83
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 1.75
+                },
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 2.17
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 7.5,
+            "t_end": 18.5,
+            "t_start": 13.5,
+            "what": "#28 dances in side and back view doing shoulder holds and guided turns with #1",
+            "why_it_matters": "Sustained visible partner dancing keeps #28 centered in frame",
+            "with": [
+              "#1",
+              "#34",
+              "#35",
+              "#36"
+            ],
+            "check": {
+              "t_start": 13.5,
+              "t_end": 18.5,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 4.0
+                },
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 3.58
+                },
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 2.33
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.0,
+            "t_end": 26.5,
+            "t_start": 21.0,
+            "what": "#28 and #1 lift joined hands overhead and perform open spins",
+            "why_it_matters": "Dynamic arm work and smiling interaction best for highlight cut",
+            "with": [
+              "#1",
+              "#36",
+              "#38",
+              "#39"
+            ],
+            "check": {
+              "t_start": 21.0,
+              "t_end": 26.5,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 4.08
+                },
+                "#38": {
+                  "status": "supported",
+                  "on_screen_s": 3.92
+                },
+                "#39": {
+                  "status": "supported",
+                  "on_screen_s": 2.83
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 8.0,
+            "t_end": 33.0,
+            "t_start": 27.5,
+            "what": "#28 does fast turns with skirt flaring then returns to close embrace with #1",
+            "why_it_matters": "Shows #28's movement and dress in motion from front and back",
+            "with": [
+              "#1",
+              "#4",
+              "#6",
+              "#40",
+              "#41"
+            ],
+            "check": {
+              "t_start": 27.5,
+              "t_end": 33.0,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 4.92
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 3.42
+                },
+                "#40": {
+                  "status": "supported",
+                  "on_screen_s": 2.5
+                },
+                "#41": {
+                  "status": "supported",
+                  "on_screen_s": 3.42
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.94,
+            "score": 9.0,
+            "t_end": 42.5,
+            "t_start": 37.0,
+            "what": "#28 dances chest-to-chest with #1, hands on his shoulders, smiling face-to-face",
+            "why_it_matters": "Clearest facial expression of #28, ideal emotional beat for her film",
+            "with": [
+              "#1",
+              "#42",
+              "#43"
+            ],
+            "check": {
+              "t_start": 37.0,
+              "t_end": 42.5,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#42": {
+                  "status": "supported",
+                  "on_screen_s": 2.75
+                },
+                "#43": {
+                  "status": "supported",
+                  "on_screen_s": 1.83
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.5,
+            "t_end": 50.0,
+            "t_start": 45.0,
+            "what": "#28 performs a dipped backbend supported by #1 then recovers to standing",
+            "why_it_matters": "Peak trick moment that showcases #28",
+            "with": [
+              "#1",
+              "#6",
+              "#42"
+            ],
+            "check": {
+              "t_start": 45.0,
+              "t_end": 50.0,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.92
+                },
+                "#42": {
+                  "status": "weak",
+                  "on_screen_s": 0.83
+                }
+              },
+              "status": "review"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 7.5,
+            "t_end": 55.5,
+            "t_start": 50.0,
+            "what": "#28 walks hand-in-hand with #1 then turns to face him and rejoins hands",
+            "why_it_matters": "Full-body walking and turning view of #28 after the dip sequence",
+            "with": [
+              "#1",
+              "#44",
+              "#45"
+            ],
+            "check": {
+              "t_start": 50.0,
+              "t_end": 55.5,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#44": {
+                  "status": "supported",
+                  "on_screen_s": 5.25
+                },
+                "#45": {
+                  "status": "supported",
+                  "on_screen_s": 4.67
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 8.0,
+            "t_end": 59.9,
+            "t_start": 55.5,
+            "what": "#28 executes final spins with arm extensions and exchanges hand holds with #1",
+            "why_it_matters": "Strong energetic closing section for #28's highlight",
+            "with": [
+              "#1",
+              "#46",
+              "#47"
+            ],
+            "check": {
+              "t_start": 55.5,
+              "t_end": 59.9,
+              "people": {
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.4
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.4
+                },
+                "#46": {
+                  "status": "supported",
+                  "on_screen_s": 2.32
+                },
+                "#47": {
+                  "status": "supported",
+                  "on_screen_s": 3.15
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #1": {
+        "span_s": [
+          0.0,
+          60.0
+        ],
+        "usd": 0.0312,
+        "summary": "A man in a white cap, light shirt and white shorts partner-dances energetically with a woman in a black dress, leading spins, turns, embraces and a dip under colorful club lights.",
+        "moments": [
+          {
+            "confidence": 0.95,
+            "score": 8.0,
+            "t_end": 4.8,
+            "t_start": 0.0,
+            "what": "#1 stands side-by-side with #28 and leads her into an underarm turn with his right arm raised.",
+            "why_it_matters": "Strong opening for #1's film showing him leading and smiling as the dance starts.",
+            "with": [
+              "#28",
+              "#30",
+              "#27"
+            ],
+            "check": {
+              "t_start": 0.0,
+              "t_end": 4.8,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.8
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.8
+                },
+                "#30": {
+                  "status": "supported",
+                  "on_screen_s": 2.07
+                },
+                "#27": {
+                  "status": "supported",
+                  "on_screen_s": 2.65
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 7.0,
+            "t_end": 9.6,
+            "t_start": 5.0,
+            "what": "#1 dances face-to-face with #28 holding both hands, stepping and guiding her through turns.",
+            "why_it_matters": "Shows #1's footwork and continuous lead in close partner hold.",
+            "with": [
+              "#28",
+              "#5"
+            ],
+            "check": {
+              "t_start": 5.0,
+              "t_end": 9.6,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.6
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.6
+                },
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 4.11
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 8.0,
+            "t_end": 15.0,
+            "t_start": 10.0,
+            "what": "#1 leads #28 through repeated spins and pulls her into a close embrace, laughing.",
+            "why_it_matters": "Highlights #1's playful energy and connection with his partner.",
+            "with": [
+              "#28",
+              "#34",
+              "#35"
+            ],
+            "check": {
+              "t_start": 10.0,
+              "t_end": 15.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 2.75
+                },
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 3.67
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 8.0,
+            "t_end": 20.5,
+            "t_start": 15.2,
+            "what": "#1 holds #28 close around the waist and guides a dip and turn with his hand on her back.",
+            "why_it_matters": "Showcase move for #1 demonstrating control and flair.",
+            "with": [
+              "#28",
+              "#34"
+            ],
+            "check": {
+              "t_start": 15.2,
+              "t_end": 20.5,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.3
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.3
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 2.32
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.0,
+            "t_end": 26.0,
+            "t_start": 21.0,
+            "what": "#1 raises joined hands overhead and spins #28 under his arm while turning himself.",
+            "why_it_matters": "Dynamic high-energy moment with clear leading action by #1.",
+            "with": [
+              "#28",
+              "#38"
+            ],
+            "check": {
+              "t_start": 21.0,
+              "t_end": 26.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.0
+                },
+                "#38": {
+                  "status": "supported",
+                  "on_screen_s": 3.75
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.93,
+            "score": 8.0,
+            "t_end": 37.5,
+            "t_start": 32.0,
+            "what": "#1 spins #28 out then pulls her back into chest-to-chest hold, both laughing.",
+            "why_it_matters": "Captures #1's charisma and joyful expression for his highlight.",
+            "with": [
+              "#28",
+              "#4",
+              "#6"
+            ],
+            "check": {
+              "t_start": 32.0,
+              "t_end": 37.5,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 5.5
+                },
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 1.17
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 3.42
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.94,
+            "score": 9.0,
+            "t_end": 49.0,
+            "t_start": 44.5,
+            "what": "#1 dips #28 backward low then lifts her back up while holding her hand.",
+            "why_it_matters": "Peak trick moment that best sells #1 as an entertaining social dancer.",
+            "with": [
+              "#28"
+            ],
+            "check": {
+              "t_start": 44.5,
+              "t_end": 49.0,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.92,
+            "score": 7.0,
+            "t_end": 59.9,
+            "t_start": 53.5,
+            "what": "#1 walks hand-in-hand with #28, then leads a final twirl and rests his arm on her shoulder.",
+            "why_it_matters": "Clean closing beat showing #1 finishing the dance confidently.",
+            "with": [
+              "#28",
+              "#44",
+              "#45"
+            ],
+            "check": {
+              "t_start": 53.5,
+              "t_end": 59.9,
+              "people": {
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 6.4
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 6.4
+                },
+                "#44": {
+                  "status": "supported",
+                  "on_screen_s": 3.08
+                },
+                "#45": {
+                  "status": "supported",
+                  "on_screen_s": 1.16
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #6": {
+        "span_s": [
+          25.83,
+          50.42
+        ],
+        "usd": 0.0161,
+        "summary": "#6 is a background guest glimpsed at the edges of the dance floor swaying and dancing while the main couple dances in the foreground.",
+        "moments": [
+          {
+            "confidence": 0.65,
+            "score": 4.0,
+            "t_end": 28.83,
+            "t_start": 26.83,
+            "what": "#6 stands on the right edge of the dance floor in the background and sways while the foreground couple dances.",
+            "why_it_matters": "Establishes #6 on the dance floor participating in the party for their film.",
+            "with": [
+              "#1",
+              "#28",
+              "#4"
+            ],
+            "check": {
+              "t_start": 26.833333333333332,
+              "t_end": 28.833333333333332,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.92
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 1.42
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.6,
+            "score": 3.0,
+            "t_end": 32.33,
+            "t_start": 30.83,
+            "what": "#6 reappears in the right background beside another guest and moves to the music.",
+            "why_it_matters": "Keeps #6's continued presence on the floor in their highlight.",
+            "with": [
+              "#1",
+              "#28",
+              "#4"
+            ],
+            "check": {
+              "t_start": 30.833333333333332,
+              "t_end": 32.33333333333333,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.5
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.5
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 1.5
+                },
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 1.5
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.65,
+            "score": 4.0,
+            "t_end": 38.33,
+            "t_start": 35.33,
+            "what": "#6 stands and dances in the center background near #42 while the foreground couple holds hands and dances.",
+            "why_it_matters": "Shows #6 dancing with others in the background crowd.",
+            "with": [
+              "#1",
+              "#28",
+              "#42"
+            ],
+            "check": {
+              "t_start": 35.33333333333333,
+              "t_end": 38.33333333333333,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 2.35
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#42": {
+                  "status": "supported",
+                  "on_screen_s": 1.78
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.65,
+            "score": 4.0,
+            "t_end": 44.83,
+            "t_start": 41.83,
+            "what": "#6 dances on the left side of the background while the main couple embraces and turns in the foreground.",
+            "why_it_matters": "Provides a longer usable cut of #6 moving to the music.",
+            "with": [
+              "#1",
+              "#28",
+              "#42"
+            ],
+            "check": {
+              "t_start": 41.83333333333333,
+              "t_end": 44.83333333333333,
+              "people": {
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.95
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#42": {
+                  "status": "supported",
+                  "on_screen_s": 1.62
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #44": {
+        "span_s": [
+          47.83,
+          57.83
+        ],
+        "usd": 0.0115,
+        "summary": "A background figure in dark clothing dances on the right side of the floor behind the main couple for most of the clip.",
+        "moments": [
+          {
+            "confidence": 0.7,
+            "score": 6,
+            "t_end": 51.83,
+            "t_start": 48.83,
+            "what": "Dances in the background on the right side of the dance floor, stepping and moving arms to the music.",
+            "why_it_matters": "Shows #44 actively dancing and enjoying the party, the core usable coverage for a personal highlight.",
+            "with": [
+              "#1",
+              "#28",
+              "#45"
+            ],
+            "check": {
+              "t_start": 48.833333333333336,
+              "t_end": 51.833333333333336,
+              "people": {
+                "#44": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#45": {
+                  "status": "supported",
+                  "on_screen_s": 2.25
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.65,
+            "score": 5,
+            "t_end": 56.33,
+            "t_start": 51.83,
+            "what": "Continues dancing in the background, raising and swinging arms while shifting position.",
+            "why_it_matters": "Extends the dance coverage showing sustained participation in the celebration.",
+            "with": [
+              "#1",
+              "#28",
+              "#45",
+              "#46"
+            ],
+            "check": {
+              "t_start": 51.833333333333336,
+              "t_end": 56.333333333333336,
+              "people": {
+                "#44": {
+                  "status": "supported",
+                  "on_screen_s": 4.25
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#45": {
+                  "status": "supported",
+                  "on_screen_s": 2.83
+                },
+                "#46": {
+                  "status": "weak",
+                  "on_screen_s": 0.58
+                }
+              },
+              "status": "review"
+            }
+          }
+        ]
+      },
+      "later60 #34": {
+        "span_s": [
+          5.92,
+          18.5
+        ],
+        "usd": 0.0154,
+        "summary": "#34, a dimly seen figure in dark clothing on the left background, stands and sways while watching the central couple dance.",
+        "moments": [
+          {
+            "confidence": 0.7,
+            "score": 3,
+            "t_end": 8.42,
+            "t_start": 6.62,
+            "what": "Stands at the far left of the dance floor, mostly still while watching the central pair dance.",
+            "why_it_matters": "Establishes #34's presence at the event for their highlight cut.",
+            "with": [
+              "#28",
+              "#5"
+            ],
+            "check": {
+              "t_start": 6.616666666666667,
+              "t_end": 8.416666666666668,
+              "people": {
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 1.49
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 1.8
+                },
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 1.8
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.65,
+            "score": 4,
+            "t_end": 15.92,
+            "t_start": 12.22,
+            "what": "Remains visible in the left background, swaying and stepping slightly in place as the party continues.",
+            "why_it_matters": "Provides the longest clear view of #34 moving to the music.",
+            "with": [
+              "#28",
+              "#35",
+              "#36"
+            ],
+            "check": {
+              "t_start": 12.216666666666667,
+              "t_end": 15.916666666666668,
+              "people": {
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 3.37
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.7
+                },
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 3.62
+                },
+                "#36": {
+                  "status": "weak",
+                  "on_screen_s": 0.41
+                }
+              },
+              "status": "review"
+            }
+          }
+        ]
+      },
+      "later60 #36": {
+        "span_s": [
+          14.08,
+          28.5
+        ],
+        "usd": 0.022,
+        "summary": "A woman in a black dress with light hair pinned up dances as the central partnered dancer with a man in a white cap under colorful club lights.",
+        "moments": [
+          {
+            "confidence": 0.92,
+            "score": 9.0,
+            "t_end": 18.58,
+            "t_start": 14.08,
+            "what": "Dances in close hold with #1, turning under his arm, wrapping arms around his shoulders and smiling toward him",
+            "why_it_matters": "Shows #36 as the central female partner with clear face and body visibility for her highlight",
+            "with": [
+              "#1",
+              "#34",
+              "#35"
+            ],
+            "check": {
+              "t_start": 14.083333333333334,
+              "t_end": 18.583333333333336,
+              "people": {
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 2.45
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.5
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 3.35
+                },
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 2.95
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 8.5,
+            "t_end": 23.28,
+            "t_start": 18.58,
+            "what": "Continues partnered dancing with #1, turning back to camera then facing him again with arms extended and raised",
+            "why_it_matters": "Keeps #36 clearly in frame through turns and partner connection, good continuous dance coverage",
+            "with": [
+              "#1",
+              "#37"
+            ],
+            "check": {
+              "t_start": 18.583333333333336,
+              "t_end": 23.28333333333333,
+              "people": {
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 2.31
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.7
+                },
+                "#37": {
+                  "status": "supported",
+                  "on_screen_s": 2.64
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 9.0,
+            "t_end": 28.08,
+            "t_start": 23.28,
+            "what": "Performs spins and side-by-side arm extensions with #1, raising joined hands overhead then spinning out and back in",
+            "why_it_matters": "Captures her most dynamic moves and joyful interaction, strongest highlight material",
+            "with": [
+              "#1",
+              "#38",
+              "#39",
+              "#6"
+            ],
+            "check": {
+              "t_start": 23.28333333333333,
+              "t_end": 28.083333333333336,
+              "people": {
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 2.65
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.8
+                },
+                "#38": {
+                  "status": "supported",
+                  "on_screen_s": 2.48
+                },
+                "#39": {
+                  "status": "supported",
+                  "on_screen_s": 1.99
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.24
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #12": {
+        "span_s": [
+          4.58,
+          15.5
+        ],
+        "usd": 0.0178,
+        "summary": "A woman in a black dress with tied-back blonde hair partner-dances throughout, performing holds, underarm turns and spins with a man in a white cap under colorful club lighting.",
+        "moments": [
+          {
+            "confidence": 0.9,
+            "score": 8.0,
+            "t_end": 7.38,
+            "t_start": 4.58,
+            "what": "#12 dances in close partner hold with #1, stepping side to side and holding hands and shoulders",
+            "why_it_matters": "Shows #12 as engaged partner dancer in clear view for her highlight film",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 4.583333333333333,
+              "t_end": 7.383333333333333,
+              "people": {
+                "#12": {
+                  "status": "supported",
+                  "on_screen_s": 1.56
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.8
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 9.0,
+            "t_end": 10.38,
+            "t_start": 7.38,
+            "what": "#12 turns under #1's raised arm, spins and switches hand holds while continuing to dance",
+            "why_it_matters": "Spin sequence is a highlight-worthy dance move centered on #12",
+            "with": [
+              "#1"
+            ],
+            "check": {
+              "t_start": 7.383333333333333,
+              "t_end": 10.383333333333333,
+              "people": {
+                "#12": {
+                  "status": "supported",
+                  "on_screen_s": 2.19
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.85,
+            "score": 8.5,
+            "t_end": 15.48,
+            "t_start": 10.38,
+            "what": "#12 continues partner dancing, raises her arm overhead, spins and smiles while moving with #1",
+            "why_it_matters": "Captures expressive, joyful dancing by #12 to close her clip",
+            "with": [
+              "#1",
+              "#34",
+              "#35"
+            ],
+            "check": {
+              "t_start": 10.383333333333333,
+              "t_end": 15.483333333333334,
+              "people": {
+                "#12": {
+                  "status": "supported",
+                  "on_screen_s": 2.88
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 5.1
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 2.96
+                },
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 4.11
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #42": {
+        "span_s": [
+          34.58,
+          47.0
+        ],
+        "usd": 0.0138,
+        "summary": "A background guest in dark clothing dances in place with a partner on the dim, lit dance floor behind the central couple.",
+        "moments": [
+          {
+            "confidence": 0.7,
+            "score": 5,
+            "t_end": 37.58,
+            "t_start": 35.68,
+            "what": "#42 is visible in the mid-background to the right of center, standing and shifting with the music near #6.",
+            "why_it_matters": "Establishes #42 present and participating on the dance floor for their own cut.",
+            "with": [
+              "#1",
+              "#28",
+              "#6"
+            ],
+            "check": {
+              "t_start": 35.68333333333334,
+              "t_end": 37.583333333333336,
+              "people": {
+                "#42": {
+                  "status": "supported",
+                  "on_screen_s": 1.73
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.9
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 1.9
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.9
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.6,
+            "score": 4,
+            "t_end": 40.78,
+            "t_start": 38.58,
+            "what": "#42 is seen behind the central couple in the background, continuing to move in place to the music.",
+            "why_it_matters": "Shows sustained presence while the foreground couple dances.",
+            "with": [
+              "#1",
+              "#28"
+            ],
+            "check": {
+              "t_start": 38.583333333333336,
+              "t_end": 40.78333333333334,
+              "people": {
+                "#42": {
+                  "status": "supported",
+                  "on_screen_s": 1.96
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.2
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.2
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.75,
+            "score": 6,
+            "t_end": 45.78,
+            "t_start": 43.08,
+            "what": "#42 dances in the left background alongside #6 while the foreground couple turns.",
+            "why_it_matters": "Clearest sustained view of #42 moving to the music, most usable for #42's highlight.",
+            "with": [
+              "#1",
+              "#28",
+              "#6"
+            ],
+            "check": {
+              "t_start": 43.083333333333336,
+              "t_end": 45.78333333333333,
+              "people": {
+                "#42": {
+                  "status": "supported",
+                  "on_screen_s": 1.88
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.7
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.7
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 2.7
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #5": {
+        "span_s": [
+          4.42,
+          13.58
+        ],
+        "usd": 0.0158,
+        "summary": "A background guest in dark clothing dances on the left side of the floor throughout the clip.",
+        "moments": [
+          {
+            "confidence": 0.6,
+            "score": 4.0,
+            "t_end": 8.62,
+            "t_start": 5.22,
+            "what": "Stands on the left background and dances in place with arms moving side to side.",
+            "why_it_matters": "Shows #5 participating in the group dancing, providing sustained visibility for #5's highlight.",
+            "with": [
+              "#1",
+              "#28",
+              "#12"
+            ],
+            "check": {
+              "t_start": 5.216666666666667,
+              "t_end": 8.616666666666667,
+              "people": {
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 3.16
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.4
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.4
+                },
+                "#12": {
+                  "status": "supported",
+                  "on_screen_s": 2.43
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.55,
+            "score": 3.0,
+            "t_end": 13.22,
+            "t_start": 10.42,
+            "what": "Remains on the left background continuing to dance with small arm and body movements.",
+            "why_it_matters": "Gives another view of #5 dancing in the party atmosphere for their film.",
+            "with": [
+              "#1",
+              "#28"
+            ],
+            "check": {
+              "t_start": 10.416666666666668,
+              "t_end": 13.216666666666669,
+              "people": {
+                "#5": {
+                  "status": "supported",
+                  "on_screen_s": 1.56
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.8
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.8
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #35": {
+        "span_s": [
+          9.33,
+          18.08
+        ],
+        "usd": 0.0154,
+        "summary": "A background guest in dark clothing stands on the right side of the dance floor watching the central couple dance for most of the clip.",
+        "moments": [
+          {
+            "confidence": 0.65,
+            "score": 3.0,
+            "t_end": 13.13,
+            "t_start": 10.43,
+            "what": "#35 becomes visible in the mid-background behind the central dancing pair, standing mostly still with slight shifts in posture.",
+            "why_it_matters": "This is the first clear sustained view of #35 for their own film, establishing their presence at the edge of the dance floor.",
+            "with": [
+              "#1",
+              "#12",
+              "#28"
+            ],
+            "check": {
+              "t_start": 10.433333333333334,
+              "t_end": 13.133333333333333,
+              "people": {
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 1.72
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.7
+                },
+                "#12": {
+                  "status": "supported",
+                  "on_screen_s": 2.21
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.7
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.6,
+            "score": 2.0,
+            "t_end": 17.83,
+            "t_start": 13.13,
+            "what": "#35 remains standing on the right side of the dance floor, watching the foreground couple dance with minimal movement.",
+            "why_it_matters": "Keeps #35 continuously visible for their highlight despite staying in the background.",
+            "with": [
+              "#1",
+              "#28",
+              "#34",
+              "#36"
+            ],
+            "check": {
+              "t_start": 13.133333333333333,
+              "t_end": 17.833333333333336,
+              "people": {
+                "#35": {
+                  "status": "supported",
+                  "on_screen_s": 3.89
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 4.7
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 4.7
+                },
+                "#34": {
+                  "status": "supported",
+                  "on_screen_s": 4.29
+                },
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 1.7
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #4": {
+        "span_s": [
+          26.42,
+          34.17
+        ],
+        "usd": 0.01,
+        "summary": "#4 appears as a background guest on the right side of the dance floor, social dancing with a partner while the central couple dances in the foreground.",
+        "moments": [
+          {
+            "confidence": 0.6,
+            "score": 4,
+            "t_end": 29.62,
+            "t_start": 27.32,
+            "what": "#4 dances in the background on the right side of the floor, moving side to side",
+            "why_it_matters": "Shows #4 social dancing in the party crowd for context in their film",
+            "with": [
+              "#6"
+            ],
+            "check": {
+              "t_start": 27.316666666666666,
+              "t_end": 29.616666666666667,
+              "people": {
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 2.06
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.51
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.65,
+            "score": 5,
+            "t_end": 32.92,
+            "t_start": 30.22,
+            "what": "#4 continues dancing with a partner and raises an arm overhead while turning",
+            "why_it_matters": "Captures #4's most energetic and clearly visible move in the clip",
+            "with": [
+              "#5"
+            ],
+            "check": {
+              "t_start": 30.21666666666667,
+              "t_end": 32.91666666666667,
+              "people": {
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 2.7
+                },
+                "#5": {
+                  "status": "unsupported",
+                  "on_screen_s": 0.0
+                }
+              },
+              "status": "contradicted"
+            }
+          }
+        ]
+      },
+      "later60 #45": {
+        "span_s": [
+          48.58,
+          56.0
+        ],
+        "usd": 0.0101,
+        "summary": "The orange-outlined guest stays in the dark background behind the foreground dancing couple and is never seen clearly enough for a highlight.",
+        "moments": []
+      },
+      "later60 #41": {
+        "span_s": [
+          27.33,
+          36.67
+        ],
+        "usd": 0.0124,
+        "summary": "A man in a light shirt, shorts, and white cap partner-dances in the foreground, leading spins, embraces, and hand-holds under club lights.",
+        "moments": [
+          {
+            "confidence": 0.9,
+            "score": 8.0,
+            "t_end": 30.53,
+            "t_start": 27.33,
+            "what": "#41 dances in the foreground with a partner, leading her through a spin and into a close embrace",
+            "why_it_matters": "Shows #41 as an active lead dancer in a clear partner sequence",
+            "with": [
+              "#28"
+            ],
+            "check": {
+              "t_start": 27.333333333333332,
+              "t_end": 30.53333333333333,
+              "people": {
+                "#41": {
+                  "status": "supported",
+                  "on_screen_s": 2.05
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.2
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.9,
+            "score": 8.0,
+            "t_end": 33.53,
+            "t_start": 30.53,
+            "what": "#41 continues partner dancing, holding and twirling his partner with raised arms",
+            "why_it_matters": "Keeps #41 centered in the highlight with sustained visible leading and movement",
+            "with": [
+              "#28",
+              "#6",
+              "#4"
+            ],
+            "check": {
+              "t_start": 30.53333333333333,
+              "t_end": 33.53333333333333,
+              "people": {
+                "#41": {
+                  "status": "supported",
+                  "on_screen_s": 1.54
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.0
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 2.03
+                },
+                "#4": {
+                  "status": "supported",
+                  "on_screen_s": 2.59
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.85,
+            "score": 7.0,
+            "t_end": 36.43,
+            "t_start": 33.53,
+            "what": "#41 turns, faces back toward his partner, and extends a hand to continue dancing",
+            "why_it_matters": "Shows #41 still leading and interacting through the end of the clip",
+            "with": [
+              "#28",
+              "#6",
+              "#42"
+            ],
+            "check": {
+              "t_start": 33.53333333333333,
+              "t_end": 36.43333333333333,
+              "people": {
+                "#41": {
+                  "status": "weak",
+                  "on_screen_s": 0.97
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.9
+                },
+                "#6": {
+                  "status": "supported",
+                  "on_screen_s": 1.61
+                },
+                "#42": {
+                  "status": "weak",
+                  "on_screen_s": 0.89
+                }
+              },
+              "status": "review"
+            }
+          }
+        ]
+      },
+      "later60 #38": {
+        "span_s": [
+          20.42,
+          27.25
+        ],
+        "usd": 0.0173,
+        "summary": "A dimly seen background figure in dark clothing dances behind the central pair under colorful club lights.",
+        "moments": [
+          {
+            "confidence": 0.65,
+            "score": 5.0,
+            "t_end": 24.42,
+            "t_start": 22.42,
+            "what": "Dances in the background behind the central pair, moving arms and stepping to the music.",
+            "why_it_matters": "Shows #38 actively dancing on the crowded dance floor.",
+            "with": [
+              "#1",
+              "#28",
+              "#36",
+              "#39"
+            ],
+            "check": {
+              "t_start": 22.416666666666668,
+              "t_end": 24.416666666666668,
+              "people": {
+                "#38": {
+                  "status": "supported",
+                  "on_screen_s": 1.58
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 2.0
+                },
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 1.42
+                },
+                "#39": {
+                  "status": "weak",
+                  "on_screen_s": 0.92
+                }
+              },
+              "status": "review"
+            }
+          },
+          {
+            "confidence": 0.6,
+            "score": 5.0,
+            "t_end": 25.72,
+            "t_start": 24.42,
+            "what": "Continues dancing and moves slightly forward between the foreground dancers.",
+            "why_it_matters": "Provides a closer view of #38 dancing for their own film.",
+            "with": [
+              "#1",
+              "#28",
+              "#36"
+            ],
+            "check": {
+              "t_start": 24.416666666666668,
+              "t_end": 25.71666666666667,
+              "people": {
+                "#38": {
+                  "status": "supported",
+                  "on_screen_s": 1.14
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.3
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 1.3
+                },
+                "#36": {
+                  "status": "weak",
+                  "on_screen_s": 0.57
+                }
+              },
+              "status": "review"
+            }
+          }
+        ]
+      },
+      "later60 #47": {
+        "span_s": [
+          55.75,
+          60.0
+        ],
+        "usd": 0.0099,
+        "summary": "#47 in a dark dress partner-dances in the center of a crowded club dance floor with others.",
+        "moments": [
+          {
+            "confidence": 0.75,
+            "score": 7.0,
+            "t_end": 57.95,
+            "t_start": 56.75,
+            "what": "#47 dances in the middle of the floor between the woman in black and the man in the white cap, stepping and turning under club lights",
+            "why_it_matters": "shows #47 clearly visible and actively dancing for her own highlight",
+            "with": [
+              "#1",
+              "#28"
+            ],
+            "check": {
+              "t_start": 56.75,
+              "t_end": 57.95,
+              "people": {
+                "#47": {
+                  "status": "supported",
+                  "on_screen_s": 1.2
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.2
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 1.2
+                }
+              },
+              "status": "supported"
+            }
+          },
+          {
+            "confidence": 0.7,
+            "score": 8.0,
+            "t_end": 59.55,
+            "t_start": 57.95,
+            "what": "#47 continues partner dancing, holding hands and spinning closely with the man in the white cap next to the woman in black",
+            "why_it_matters": "captures close partner interaction and joyful movement central to #47's film",
+            "with": [
+              "#1",
+              "#28"
+            ],
+            "check": {
+              "t_start": 57.95,
+              "t_end": 59.55,
+              "people": {
+                "#47": {
+                  "status": "supported",
+                  "on_screen_s": 1.6
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 1.6
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 1.6
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      },
+      "later60 #39": {
+        "span_s": [
+          20.83,
+          28.58
+        ],
+        "usd": 0.0131,
+        "summary": "#39 is a distant dim background figure on the right side of the dance floor seen swaying slightly.",
+        "moments": [
+          {
+            "confidence": 0.55,
+            "score": 3,
+            "t_end": 25.13,
+            "t_start": 21.73,
+            "what": "#39 stands in the far background on the right and moves slightly to the music while the foreground couple dances",
+            "why_it_matters": "This is the only stretch where #39 can be picked out and shows them present and dancing at the party",
+            "with": [
+              "#1",
+              "#28",
+              "#36",
+              "#38"
+            ],
+            "check": {
+              "t_start": 21.73333333333333,
+              "t_end": 25.133333333333333,
+              "people": {
+                "#39": {
+                  "status": "supported",
+                  "on_screen_s": 2.19
+                },
+                "#1": {
+                  "status": "supported",
+                  "on_screen_s": 3.4
+                },
+                "#28": {
+                  "status": "supported",
+                  "on_screen_s": 3.4
+                },
+                "#36": {
+                  "status": "supported",
+                  "on_screen_s": 2.59
+                },
+                "#38": {
+                  "status": "supported",
+                  "on_screen_s": 2.59
+                }
+              },
+              "status": "supported"
+            }
+          }
+        ]
+      }
+    },
+    "status_counts": {
+      "supported": 76,
+      "review": 8,
+      "contradicted": 1
+    }
+  }
+}

@@ -79,12 +79,22 @@ def test_moment_checks_against_tracks():
     ts = {t.label: t for t in build(dets("0", range(0, 120)), dets("1", range(0, 30)))}
     assert set(ts) == {"#1", "#2"}
     ok = moments.check_event({"t_start": 0, "t_end": 4, "people": ["#1", "#2"]}, ts)
-    assert ok["status"] == "supported" and ok["people"]["#2"]["on_screen_s"] == 2.5
+    assert ok["status"] == "presence_ok" and ok["people"]["#2"]["on_screen_s"] == 2.5
     weak = moments.check_event({"t_start": 2, "t_end": 6, "people": ["#2"]}, ts)
     assert weak["people"]["#2"]["status"] == "weak" and weak["status"] == "review"
     bad = moments.check_event({"t_start": 5, "t_end": 8, "people": ["#2", "#9", spark.UNMARKED]}, ts)
-    assert bad["people"]["#2"]["status"] == "unsupported" and bad["people"]["#9"]["status"] == "unknown_tag"
+    assert bad["people"]["#2"]["status"] == "absent" and bad["people"]["#9"]["status"] == "unknown_tag"
     assert bad["people"][spark.UNMARKED]["status"] == "unmarked" and bad["status"] == "contradicted"
+    shifted = moments.check_person_moments("#2", [{"t_start": 0.0, "t_end": 1.0, "with": ["#1"]},
+                                                  {"t_start": 5.0, "t_end": 6.0, "with": []}], ts, offset_s=1.0)
+    assert [m["t_start"] for m in shifted] == [1.0, 6.0]
+    assert [m["check"]["status"] for m in shifted] == ["presence_ok", "contradicted"]
+    # the subject must cover half the moment; a 1 s glimpse can't carry an 8 s moment
+    long = moments.check_event({"t_start": 1.5, "t_end": 9.5, "people": ["#2"]}, ts, subject="#2")
+    assert long["people"]["#2"]["status"] == "weak" and long["status"] == "review"
+    assert moments.check_event({"t_start": 0, "t_end": 2, "people": [spark.UNMARKED]}, ts)["status"] == "review"
+    assert moments.check_event({"t_start": 9, "t_end": 12, "people": ["#1"]}, ts, duration_s=10)["status"] == "bad_time"
+    assert moments.check_event({"t_start": float("nan"), "t_end": 2, "people": ["#1"]}, ts)["status"] == "bad_time"
     log = {"people": [{"label": "#2", "first_seen_s": 0.4, "appearance": ""}],
            "events": [{"t_start": 0, "t_end": 4, "people": ["#1", "#2"]}]}
     checked = moments.check_log(log, ts)

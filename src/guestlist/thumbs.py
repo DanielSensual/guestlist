@@ -37,11 +37,16 @@ class Thumb:
 
 
 def geometry_scores(track: Track) -> np.ndarray:
-    """Per detection: big, central and not clipped by the frame edge."""
+    """Per detection: big (but not suspiciously big), central and not clipped by the frame edge.
+
+    Size counts only up to the track's 75th percentile: the biggest boxes are often SAM's glitches,
+    where one dancer's box swallows the partner (Day 3: the top-size frames had masks filling 11-28%).
+    """
     w, h = track.frame_size
     b = track.boxes.astype(float)
     area = track.area_frac()
-    size = np.sqrt(area / area.max())
+    p75, median = float(np.percentile(area, 75)), float(np.median(area))
+    size = np.sqrt(np.minimum(area, p75) / p75) * np.where(area > 1.8 * median, 0.5, 1.0)
     cx, cy = (b[:, 0] + b[:, 2]) / 2, (b[:, 1] + b[:, 3]) / 2
     centre = 1 - np.hypot((cx - w / 2) / (w / 2), (cy - h / 2) / (h / 2)) / np.sqrt(2)
     edge = (b[:, 0] <= EDGE_PX) | (b[:, 1] <= EDGE_PX) | (b[:, 2] >= w - EDGE_PX) | (b[:, 3] >= h - EDGE_PX)

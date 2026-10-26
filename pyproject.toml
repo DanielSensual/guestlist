@@ -17,6 +17,10 @@ dependencies = [
     "numpy>=1.26",
     "opencv-python>=4.10",
     "ghostcut",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]
@@ -24,6 +28,9 @@ test = ["pytest>=8.2", "jsonschema>=4.22"]
 
 [tool.setuptools]
 package-dir = { "" = "src" }
+
+[tool.setuptools.package-data]
+guestlist = ["app/templates/*.html"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -32,6 +32,26 @@ def test_marked_schema_only_allows_our_tags():
         jsonschema.validate(ok, schema)
 
 
+def test_reid_and_person_moment_schemas_are_strict_and_closed():
+    def walk(node):
+        if node.get("type") == "object":
+            assert node.get("additionalProperties") is False
+            assert set(node["required"]) == set(node["properties"])
+            for child in node["properties"].values():
+                walk(child)
+        if node.get("type") == "array":
+            walk(node["items"])
+    reid = spark.reid_schema(["A", "B"])
+    walk(reid)
+    jsonschema.validate({"match": spark.NONE, "also_same": [], "confidence": 0.4, "evidence": "e"}, reid)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate({"match": "C", "also_same": [], "confidence": 0.4, "evidence": "e"}, reid)
+    pm = spark.person_moments_schema(["#1", "#2"])
+    walk(pm)
+    jsonschema.validate({"summary": "s", "moments": [{"t_start": 0, "t_end": 2, "what": "w", "why_it_matters": "y",
+                                                      "score": 7, "confidence": 0.8, "with": ["#2"]}]}, pm)
+
+
 def test_schema_rejects_missing_fields():
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.validate({"clip_summary": "x", "people": []}, spark.EVENT_LOG_SCHEMA)

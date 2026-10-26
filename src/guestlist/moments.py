@@ -2,23 +2,32 @@
 
 Spark says "#2 is in a dip from 15 to 22 s". SAM knows on which frames #2 exists. Every claim
 gets a mechanical status, so the review queue only shows a human the ones that don't add up.
+
+These are *presence* checks: they prove the tagged people were on screen when Spark says, not that
+the action described is theirs or that the moment is any good ("presence_ok", never "verified").
 """
 
 from __future__ import annotations
 
+import math
+
 from .meta.spark import UNMARKED
 from .tracks import Track
 
-# A tag is supported when it is on screen for at least 1 s of the event (or half of a shorter event).
+# A co-star is present when on screen for at least 1 s of the event (or half of a shorter event).
 # Day-2 run: requiring half of every event marked background dancers "weak" in Spark's 6-8 s events
-# although they were visibly there for 2-4 s of each.
+# although they were visibly there for 2-4 s of each. The subject of a moment must cover half of it.
 MIN_ON_SCREEN_S = 1.0
+SUBJECT_COVERAGE = 0.5
 
 
-def check_event(event: dict, tracks: dict[str, Track]) -> dict:
-    """Per tag in the event: supported / weak / unsupported / unknown_tag / unmarked, plus an overall status."""
+def check_event(event: dict, tracks: dict[str, Track], *, subject: str | None = None,
+                duration_s: float | None = None) -> dict:
+    """Per tag: present / weak / absent / unknown_tag / unmarked; overall presence_ok / review / contradicted / bad_time."""
     t0, t1 = float(event["t_start"]), float(event["t_end"])
-    need = min(MIN_ON_SCREEN_S, (t1 - t0) / 2)
+    if not (math.isfinite(t0) and math.isfinite(t1)) or t1 <= t0 or t0 < 0 or \
+            (duration_s is not None and t1 > duration_s + 0.5):
+        return {"t_start": t0, "t_end": t1, "people": {}, "status": "bad_time"}
     people = {}
     for tag in event.get("people", []):
         if tag == UNMARKED:
@@ -28,19 +37,31 @@ def check_event(event: dict, tracks: dict[str, Track]) -> dict:
         if track is None:
             people[tag] = {"status": "unknown_tag"}
             continue
-        on = track.presence(t0, t1) * max(t1 - t0, 0)
-        people[tag] = {"status": "supported" if on >= need and on > 0 else "weak" if on > 0 else "unsupported",
-                       "on_screen_s": round(on, 2)}
+        p = track.presence(t0, t1)
+        on = p * (t1 - t0)
+        ok = p >= SUBJECT_COVERAGE if tag == subject else on >= min(MIN_ON_SCREEN_S, (t1 - t0) / 2)
+        people[tag] = {"status": "present" if ok else "weak" if on > 0 else "absent", "on_screen_s": round(on, 2)}
     statuses = {v["status"] for v in people.values()}
-    if t1 <= t0:
-        overall = "bad_time"
-    elif statuses & {"unsupported", "unknown_tag"}:
+    if statuses & {"absent", "unknown_tag"}:
         overall = "contradicted"
-    elif "weak" in statuses or not people:
+    elif "weak" in statuses or "present" not in statuses:  # nobody we track is provably there
         overall = "review"
     else:
-        overall = "supported"
+        overall = "presence_ok"
     return {"t_start": t0, "t_end": t1, "people": people, "status": overall}
+
+
+def check_person_moments(target: str, moments: list[dict], tracks: dict[str, Track], offset_s: float = 0.0,
+                         duration_s: float | None = None) -> list[dict]:
+    """A guest's moments (times relative to a sub-clip starting at `offset_s`) moved onto the clip's clock and
+    checked: the guest must cover half of each moment, everyone they are `with` must be on screen in it."""
+    out = []
+    for m in moments:
+        t0, t1 = m["t_start"] + offset_s, m["t_end"] + offset_s
+        check = check_event({"t_start": t0, "t_end": t1, "people": [target, *m.get("with", [])]}, tracks,
+                            subject=target, duration_s=duration_s)
+        out.append({**m, "t_start": round(t0, 2), "t_end": round(t1, 2), "check": check})
+    return out
 
 
 def check_log(log: dict, tracks: dict[str, Track]) -> dict:
