@@ -16,12 +16,14 @@ from pathlib import Path
 
 import numpy as np
 
-from .meta import files, sam
+from .meta import cache, files, sam
 
 WINDOW_S = 10.0
 OVERLAP_S = 1.0
 MIN_WINDOW_S = 5.0  # SAM bills 50 frames minimum (~4.2 s at 12 fps); smaller windows only add requests
 STITCH_IOU = 0.5
+STITCH_MIN_SHARED = 3  # one or two shared frames can't vouch for an irreversible join
+STITCH_MARGIN = 0.1    # the best match must beat every rival for either side by this much
 
 
 @dataclass
@@ -63,6 +65,8 @@ class WindowedResult:
 def plan_windows(frames: int, fps: float, window_s: float = WINDOW_S, overlap_s: float = OVERLAP_S) -> list[tuple[int, int]]:
     """Overlapping [start, end) frame ranges covering the clip; a short tail is folded into the last window."""
     w, o = round(window_s * fps), round(overlap_s * fps)
+    if not 0 <= o < w:
+        raise ValueError(f"overlap ({o} frames) must be shorter than the window ({w} frames)")
     if frames <= w:
         return [(0, frames)]
     spans: list[tuple[int, int]] = []
@@ -107,7 +111,11 @@ def iou(a: tuple[int, int, int, int], b: tuple[int, int, int, int]) -> float:
 
 
 def stitch(windows: list[Window], min_iou: float = STITCH_IOU) -> tuple[list[sam.Detection], list[dict]]:
-    """Join per-window ids into clip-wide tracks: same person = high mean box IoU on the shared frames."""
+    """Join per-window ids into clip-wide tracks: same person = high mean box IoU on the shared frames.
+
+    A join needs enough shared frames and a clear winner; otherwise the seam is left open (recorded in `links`
+    with made=False) and the two fragments go to the roster's merge proposals instead of being joined blind.
+    """
     windows = sorted(windows, key=lambda w: w.start)
     parent: dict[tuple[int, str], tuple[int, str]] = {}
 
@@ -143,11 +151,17 @@ def stitch(windows: list[Window], min_iou: float = STITCH_IOU) -> tuple[list[sam
         for score, n, ia, ib in sorted(scored, reverse=True):
             if score < min_iou or ia in used_a or ib in used_b:
                 continue
+            rival = max((s_ for s_, _, xa, xb in scored if (xa == ia) != (xb == ib)), default=0.0)
+            link = {"seam": [lo, hi], "from": f"w{i}:{ia}", "to": f"w{i + 1}:{ib}", "iou": round(score, 3),
+                    "shared_frames": n, "rival_iou": round(rival, 3), "made": True}
+            if n < STITCH_MIN_SHARED or score - rival < STITCH_MARGIN:
+                link.update(made=False, reason="too few shared frames" if n < STITCH_MIN_SHARED else "ambiguous")
+                links.append(link)
+                continue
             used_a.add(ia)
             used_b.add(ib)
             parent[find((i + 1, ib))] = find((i, ia))
-            links.append({"seam": [lo, hi], "from": f"w{i}:{ia}", "to": f"w{i + 1}:{ib}",
-                          "iou": round(score, 3), "shared_frames": n})
+            links.append(link)
 
     seen: dict[tuple[int, str], int] = {}  # (global frame, root) already emitted
     first: dict[tuple[int, str], int] = {}
@@ -176,7 +190,8 @@ def segment_windowed(proxy: str | Path, prompt: str = "person", *, fps: float, f
                      workdir: str | Path | None = None, keep_uploads: bool = False) -> WindowedResult:
     """SAM concept pass over a whole proxy in windows; full windows are split until they fit or hit the minimum."""
     proxy = Path(proxy)
-    workdir = Path(workdir) if workdir else proxy.parent / "windows" / proxy.stem
+    # window cuts are named by the proxy's content hash, so a replaced proxy never reuses stale cuts
+    workdir = Path(workdir) if workdir else proxy.parent / "windows" / f"{proxy.stem}-{cache.sha256_file(proxy)[:8]}"
     overlap = round(overlap_s * fps)
     min_frames = round(min_window_s * fps)
 

@@ -1,3 +1,5 @@
+import pytest
+
 from guestlist import windows
 from guestlist.meta import sam
 
@@ -12,6 +14,8 @@ def test_plan_covers_every_frame_with_overlap_and_folds_a_short_tail():
     for (a0, a1), (b0, b1) in zip(spans, spans[1:]):
         assert b0 == a1 - 12  # one second shared, for stitching
     assert windows.plan_windows(100, 12) == [(0, 100)]
+    with pytest.raises(ValueError):
+        windows.plan_windows(720, 12, window_s=1, overlap_s=1)
     # a 30-frame tail would be a wasteful request: it joins the last window instead
     assert windows.plan_windows(246, 12, window_s=10, overlap_s=1)[-1] == (108, 246)
 
@@ -22,20 +26,35 @@ def test_split_halves_still_overlap():
 
 
 def test_stitch_joins_the_same_person_across_a_seam_and_keeps_strangers_apart():
-    # window A frames 0-9, window B frames 8-17 (local 0-9); person "a0" == "b5"; "a1" leaves before the seam
+    # window A frames 0-9, window B frames 7-16 (local 0-9); person "a0" == "b5"; "a1" leaves before the seam
     wa = [sam.Detection(f, "0", (10 + f, 10, 40 + f, 80)) for f in range(10)] + \
          [sam.Detection(f, "1", (60, 10, 90, 80)) for f in range(5)]
-    wb = [sam.Detection(f, "5", (18 + f, 10, 48 + f, 80)) for f in range(10)] + \
+    wb = [sam.Detection(f, "5", (17 + f, 10, 47 + f, 80)) for f in range(10)] + \
          [sam.Detection(f, "2", (60, 60, 90, 99)) for f in range(4, 10)]
-    dets, links = windows.stitch([windows.Window(0, 10, result(wa)), windows.Window(8, 18, result(wb))])
+    dets, links = windows.stitch([windows.Window(0, 10, result(wa)), windows.Window(7, 17, result(wb))])
     tracks = {}
     for d in dets:
         tracks.setdefault(d.object_id, []).append(d.frame)
-    assert len(links) == 1 and links[0]["from"] == "w0:0" and links[0]["to"] == "w1:5"
-    assert tracks["0"] == list(range(18))      # one clip-wide id, overlap frames emitted once
+    assert len(links) == 1 and links[0]["from"] == "w0:0" and links[0]["to"] == "w1:5" and links[0]["made"]
+    assert tracks["0"] == list(range(17))      # one clip-wide id, overlap frames emitted once
     assert tracks["1"] == list(range(5))
-    assert tracks["2"] == list(range(12, 18))  # global frames, ids ordered by first appearance
+    assert tracks["2"] == list(range(11, 17))  # global frames, ids ordered by first appearance
     assert sorted(tracks) == ["0", "1", "2"]
+
+
+def test_stitch_leaves_thin_or_ambiguous_seams_open():
+    # only two shared frames: not enough to vouch for a join
+    wa = [sam.Detection(f, "0", (10, 10, 40, 80)) for f in range(10)]
+    wb = [sam.Detection(f, "0", (10, 10, 40, 80)) for f in range(10)]
+    dets, links = windows.stitch([windows.Window(0, 10, result(wa)), windows.Window(8, 18, result(wb))])
+    assert not links[0]["made"] and links[0]["reason"] == "too few shared frames"
+    assert len({d.object_id for d in dets}) == 2
+    # a couple in one box-sized clinch: two equally good answers, so neither is taken
+    wa = [sam.Detection(f, i, (10, 10, 60, 90)) for f in range(10) for i in ("0", "1")]
+    wb = [sam.Detection(f, i, (11, 10, 61, 90)) for f in range(10) for i in ("7", "8")]
+    dets, links = windows.stitch([windows.Window(0, 10, result(wa)), windows.Window(6, 16, result(wb))])
+    assert links and all(not l["made"] and l["reason"] == "ambiguous" for l in links)
+    assert len({d.object_id for d in dets}) == 4
 
 
 def test_saturation_is_sixteen_ids():

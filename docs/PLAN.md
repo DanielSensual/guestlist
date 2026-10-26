@@ -21,7 +21,7 @@ Drop two cameras' worth of event footage (wedding, dance night, kids' recital, c
 **Theme:** Build for Your World. **Track:** see §8 — Indie unless Daniel already applied as Startup.
 
 **Design principles the judges should see in the README**
-- No face-recognition database. Tracks are grouped by a human with Spark proposing matches from thumbnails; nothing biometric is stored. (Keeps it legal in BIPA states and honest about reliability.)
+- No face-recognition database. Tracks are grouped by a human with Spark proposing matches from thumbnails; no face embeddings are stored. (This is a design choice, not a legal determination; transient processing can still be regulated, e.g. under BIPA. Get advice before any real deployment.)
 - Mechanical checks are labeled as mechanical (durations, source timecodes, "this person's mask never appears in the public recap"); semantic judgments are labeled with confidence and a review status. Never present model agreement as proof.
 - Ends in the editor's NLE: FCPXML/OTIO export of every reel, plus the rendered MP4s.
 - Pre-existing open-source pipeline (GhostCut, MIT, public since July 2026) is disclosed; the new hackathon work (SAM tracker, roster, ledger, consent engine, web app) is clearly marked.
