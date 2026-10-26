@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import time
 from dataclasses import dataclass
@@ -147,6 +148,40 @@ def video_json(video: str | Path, *, schema: dict, name: str, developer: str, pr
 def event_log(video: str | Path, **kw) -> SparkResult:
     return video_json(video, schema=EVENT_LOG_SCHEMA, name="event_log",
                       developer=EVENT_LOG_DEVELOPER, prompt=EVENT_LOG_PROMPT, **kw)
+
+
+UNMARKED = "unmarked"
+
+MARKED_PROMPT = (
+    "Log this clip. Our tracker has outlined people and tagged them; each tag follows its person for the "
+    "whole clip and has its own colour: {legend}. These tags are the ONLY labels you may use for people.\n"
+    "- people: one entry per tag you actually see, labelled exactly as tagged, with a short appearance "
+    "description of the person that tag is attached to (clothing, hair, distinguishing features — no names, "
+    "no guesses about identity) and the second the tag first appears. Use \"" + UNMARKED + "\" for anyone "
+    "important who has no tag.\n"
+    "- events: the moments an editor would want, each with t_start/t_end in seconds from the start of the "
+    "clip, the tags of the people involved, what happens, why it matters for that person's film, score 0-10 "
+    "(how strong the moment is), and confidence 0-1 that the timing and tags are right. When tagged people "
+    "overlap, go by the outline the tag sits on. Cover the whole clip; prefer several short precise moments "
+    "over one long vague one.\n"
+    "- clip_summary: two sentences."
+)
+
+
+def marked_schema(labels: list[str]) -> dict:
+    """The event-log schema with person labels restricted to our tags (plus "unmarked")."""
+    schema = copy.deepcopy(EVENT_LOG_SCHEMA)
+    allowed = {"type": "string", "enum": [*labels, UNMARKED]}
+    schema["properties"]["people"]["items"]["properties"]["label"] = allowed
+    schema["properties"]["events"]["items"]["properties"]["people"]["items"] = dict(allowed)
+    return schema
+
+
+def marked_event_log(video: str | Path, legend: dict[str, str], **kw) -> SparkResult:
+    """Event log over a marked proxy (`guestlist.burn`): Spark refers to people by our track tags."""
+    text = ", ".join(f"{tag} = {colour} outline" for tag, colour in legend.items())
+    return video_json(video, schema=marked_schema(list(legend)), name="marked_event_log",
+                      developer=EVENT_LOG_DEVELOPER, prompt=MARKED_PROMPT.format(legend=text), **kw)
 
 
 def count_video_tokens(video: str | Path, prompt: str = "Describe this clip.", model: str = DEFAULT_MODEL) -> int:

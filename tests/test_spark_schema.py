@@ -20,6 +20,18 @@ def test_schema_is_strict_mode_compatible():
     walk(spark.EVENT_LOG_SCHEMA)
 
 
+def test_marked_schema_only_allows_our_tags():
+    schema = spark.marked_schema(["#1", "#2"])
+    assert spark.EVENT_LOG_SCHEMA["properties"]["people"]["items"]["properties"]["label"] == {"type": "string"}
+    ok = {"clip_summary": "x", "people": [{"label": "#1", "appearance": "a", "first_seen_s": 0}],
+          "events": [{"t_start": 0, "t_end": 1, "people": ["#2", spark.UNMARKED], "what": "w",
+                      "why_it_matters": "y", "score": 5, "confidence": 0.5}]}
+    jsonschema.validate(ok, schema)
+    ok["events"][0]["people"] = ["P1"]
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate(ok, schema)
+
+
 def test_schema_rejects_missing_fields():
     with pytest.raises(jsonschema.ValidationError):
         jsonschema.validate({"clip_summary": "x", "people": []}, spark.EVENT_LOG_SCHEMA)
